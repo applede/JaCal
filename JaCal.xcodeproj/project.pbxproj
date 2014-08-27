@@ -13,6 +13,13 @@
 		1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29919ADA44B003EF680 /* Main.storyboard */; };
 		1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29C19ADA44B003EF680 /* Images.xcassets */; };
 		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
+		18A80EDA19ADC8EC000B2529 /* thick-left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A80ED819ADC8EC000B2529 /* thick-left@2x.png */; };
+		18A80EDB19ADC8EC000B2529 /* thick-right@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 18A80ED919ADC8EC000B2529 /* thick-right@2x.png */; };
+		18A80EDD19ADCC86000B2529 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */; };
+		18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */; };
+		18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE219ADD0E4000B2529 /* DayCell.swift */; };
+		18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */; };
+		18D181B019AE1A54009F60E7 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D181AF19AE1A54009F60E7 /* Global.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +43,13 @@
 		1827A2A219ADA44B003EF680 /* JaCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827A2A719ADA44B003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
+		18A80ED819ADC8EC000B2529 /* thick-left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thick-left@2x.png"; sourceTree = "<group>"; };
+		18A80ED919ADC8EC000B2529 /* thick-right@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "thick-right@2x.png"; sourceTree = "<group>"; };
+		18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		18A80EE219ADD0E4000B2529 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
+		18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayCell.swift; sourceTree = "<group>"; };
+		18D181AF19AE1A54009F60E7 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,9 +92,11 @@
 			isa = PBXGroup;
 			children = (
 				1827A29219ADA44A003EF680 /* AppDelegate.swift */,
-				1827A29719ADA44B003EF680 /* ViewController.swift */,
+				18A80EE419ADD0EB000B2529 /* View */,
+				18A80EE019ADCDBF000B2529 /* Controller */,
 				1827A29919ADA44B003EF680 /* Main.storyboard */,
 				1827A29C19ADA44B003EF680 /* Images.xcassets */,
+				18A80EE119ADCDE0000B2529 /* Image */,
 				1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */,
 				1827A29019ADA44A003EF680 /* Supporting Files */,
 			);
@@ -110,6 +126,35 @@
 				1827A2A719ADA44B003EF680 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18A80EE019ADCDBF000B2529 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				1827A29719ADA44B003EF680 /* ViewController.swift */,
+				18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */,
+				18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */,
+				18D181AF19AE1A54009F60E7 /* Global.swift */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		18A80EE119ADCDE0000B2529 /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				18A80ED819ADC8EC000B2529 /* thick-left@2x.png */,
+				18A80ED919ADC8EC000B2529 /* thick-right@2x.png */,
+			);
+			name = Image;
+			sourceTree = "<group>";
+		};
+		18A80EE419ADD0EB000B2529 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				18A80EE219ADD0E4000B2529 /* DayCell.swift */,
+				18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +238,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */,
+				18A80EDB19ADC8EC000B2529 /* thick-right@2x.png in Resources */,
 				1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */,
+				18A80EDA19ADC8EC000B2529 /* thick-left@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,8 +258,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D181B019AE1A54009F60E7 /* Global.swift in Sources */,
+				18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */,
+				18A80EDD19ADCC86000B2529 /* CalendarViewController.swift in Sources */,
 				1827A29819ADA44B003EF680 /* ViewController.swift in Sources */,
+				18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */,
 				1827A29319ADA44A003EF680 /* AppDelegate.swift in Sources */,
+				18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */,
 				1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -330,6 +382,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = JaCal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -341,6 +394,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = JaCal/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -399,6 +453,7 @@
 				1827A2AE19ADA44B003EF680 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1827A2AF19ADA44B003EF680 /* Build configuration list for PBXNativeTarget "JaCalTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +462,7 @@
 				1827A2B119ADA44B003EF680 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
