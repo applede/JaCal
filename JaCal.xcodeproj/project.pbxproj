@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1827A29319ADA44A003EF680 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A29219ADA44A003EF680 /* AppDelegate.swift */; };
+		1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */; };
+		1827A29819ADA44B003EF680 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A29719ADA44B003EF680 /* ViewController.swift */; };
+		1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29919ADA44B003EF680 /* Main.storyboard */; };
+		1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29C19ADA44B003EF680 /* Images.xcassets */; };
+		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		1827A2A319ADA44B003EF680 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1827A28519ADA44A003EF680 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1827A28C19ADA44A003EF680;
+			remoteInfo = JaCal;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		1827A28D19ADA44A003EF680 /* JaCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1827A29119ADA44A003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1827A29219ADA44A003EF680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1827A29519ADA44B003EF680 /* JaCal.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = JaCal.xcdatamodel; sourceTree = "<group>"; };
+		1827A29719ADA44B003EF680 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		1827A29A19ADA44B003EF680 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		1827A29C19ADA44B003EF680 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		1827A2A219ADA44B003EF680 /* JaCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1827A2A719ADA44B003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1827A28A19ADA44A003EF680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1827A29F19ADA44B003EF680 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1827A28419ADA44A003EF680 = {
+			isa = PBXGroup;
+			children = (
+				1827A28F19ADA44A003EF680 /* JaCal */,
+				1827A2A519ADA44B003EF680 /* JaCalTests */,
+				1827A28E19ADA44A003EF680 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1827A28E19ADA44A003EF680 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1827A28D19ADA44A003EF680 /* JaCal.app */,
+				1827A2A219ADA44B003EF680 /* JaCalTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1827A28F19ADA44A003EF680 /* JaCal */ = {
+			isa = PBXGroup;
+			children = (
+				1827A29219ADA44A003EF680 /* AppDelegate.swift */,
+				1827A29719ADA44B003EF680 /* ViewController.swift */,
+				1827A29919ADA44B003EF680 /* Main.storyboard */,
+				1827A29C19ADA44B003EF680 /* Images.xcassets */,
+				1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */,
+				1827A29019ADA44A003EF680 /* Supporting Files */,
+			);
+			path = JaCal;
+			sourceTree = "<group>";
+		};
+		1827A29019ADA44A003EF680 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1827A29119ADA44A003EF680 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1827A2A519ADA44B003EF680 /* JaCalTests */ = {
+			isa = PBXGroup;
+			children = (
+				1827A2A819ADA44B003EF680 /* JaCalTests.swift */,
+				1827A2A619ADA44B003EF680 /* Supporting Files */,
+			);
+			path = JaCalTests;
+			sourceTree = "<group>";
+		};
+		1827A2A619ADA44B003EF680 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				1827A2A719ADA44B003EF680 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1827A28C19ADA44A003EF680 /* JaCal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1827A2AC19ADA44B003EF680 /* Build configuration list for PBXNativeTarget "JaCal" */;
+			buildPhases = (
+				1827A28919ADA44A003EF680 /* Sources */,
+				1827A28A19ADA44A003EF680 /* Frameworks */,
+				1827A28B19ADA44A003EF680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JaCal;
+			productName = JaCal;
+			productReference = 1827A28D19ADA44A003EF680 /* JaCal.app */;
+			productType = "com.apple.product-type.application";
+		};
+		1827A2A119ADA44B003EF680 /* JaCalTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1827A2AF19ADA44B003EF680 /* Build configuration list for PBXNativeTarget "JaCalTests" */;
+			buildPhases = (
+				1827A29E19ADA44B003EF680 /* Sources */,
+				1827A29F19ADA44B003EF680 /* Frameworks */,
+				1827A2A019ADA44B003EF680 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1827A2A419ADA44B003EF680 /* PBXTargetDependency */,
+			);
+			name = JaCalTests;
+			productName = JaCalTests;
+			productReference = 1827A2A219ADA44B003EF680 /* JaCalTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1827A28519ADA44A003EF680 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0600;
+				ORGANIZATIONNAME = "Jake Song";
+				TargetAttributes = {
+					1827A28C19ADA44A003EF680 = {
+						CreatedOnToolsVersion = 6.0;
+					};
+					1827A2A119ADA44B003EF680 = {
+						CreatedOnToolsVersion = 6.0;
+						TestTargetID = 1827A28C19ADA44A003EF680;
+					};
+				};
+			};
+			buildConfigurationList = 1827A28819ADA44A003EF680 /* Build configuration list for PBXProject "JaCal" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1827A28419ADA44A003EF680;
+			productRefGroup = 1827A28E19ADA44A003EF680 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1827A28C19ADA44A003EF680 /* JaCal */,
+				1827A2A119ADA44B003EF680 /* JaCalTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1827A28B19ADA44A003EF680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */,
+				1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1827A2A019ADA44B003EF680 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1827A28919ADA44A003EF680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1827A29819ADA44B003EF680 /* ViewController.swift in Sources */,
+				1827A29319ADA44A003EF680 /* AppDelegate.swift in Sources */,
+				1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1827A29E19ADA44B003EF680 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1827A2A419ADA44B003EF680 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1827A28C19ADA44A003EF680 /* JaCal */;
+			targetProxy = 1827A2A319ADA44B003EF680 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1827A29919ADA44B003EF680 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1827A29A19ADA44B003EF680 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1827A2AA19ADA44B003EF680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1827A2AB19ADA44B003EF680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1827A2AD19ADA44B003EF680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = JaCal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1827A2AE19ADA44B003EF680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				INFOPLIST_FILE = JaCal/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		1827A2B019ADA44B003EF680 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JaCalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JaCal.app/JaCal";
+			};
+			name = Debug;
+		};
+		1827A2B119ADA44B003EF680 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = JaCalTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/JaCal.app/JaCal";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1827A28819ADA44A003EF680 /* Build configuration list for PBXProject "JaCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1827A2AA19ADA44B003EF680 /* Debug */,
+				1827A2AB19ADA44B003EF680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1827A2AC19ADA44B003EF680 /* Build configuration list for PBXNativeTarget "JaCal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1827A2AD19ADA44B003EF680 /* Debug */,
+				1827A2AE19ADA44B003EF680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		1827A2AF19ADA44B003EF680 /* Build configuration list for PBXNativeTarget "JaCalTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1827A2B019ADA44B003EF680 /* Debug */,
+				1827A2B119ADA44B003EF680 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1827A29519ADA44B003EF680 /* JaCal.xcdatamodel */,
+			);
+			currentVersion = 1827A29519ADA44B003EF680 /* JaCal.xcdatamodel */;
+			path = JaCal.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 1827A28519ADA44A003EF680 /* Project object */;
+}
