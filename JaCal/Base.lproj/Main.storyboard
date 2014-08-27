@@ -8,7 +8,7 @@
         <!--Title-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -17,12 +17,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1f-uk-NqP">
-                                <rect key="frame" x="0.0" y="391" width="600" height="209"/>
-                                <connections>
-                                    <segue destination="9QJ-H6-yWT" kind="embed" id="iFz-HS-D6V"/>
-                                </connections>
-                            </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fV1-9U-L1l">
                                 <rect key="frame" x="0.0" y="64" width="600" height="319"/>
                                 <constraints>
@@ -32,6 +26,12 @@
                                     <segue destination="iSY-5b-fVQ" kind="embed" id="Urb-YT-glG"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1f-uk-NqP">
+                                <rect key="frame" x="0.0" y="391" width="600" height="209"/>
+                                <connections>
+                                    <segue destination="9QJ-H6-yWT" kind="embed" id="iFz-HS-D6V"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -39,7 +39,7 @@
                             <constraint firstAttribute="trailing" secondItem="fV1-9U-L1l" secondAttribute="trailing" id="7Tz-KA-f33"/>
                             <constraint firstItem="Q1f-uk-NqP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="H3Y-nf-1Cg"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Q1f-uk-NqP" secondAttribute="bottom" id="R9D-kt-fbH"/>
-                            <constraint firstItem="fV1-9U-L1l" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="blV-jQ-v2A"/>
+                            <constraint firstItem="fV1-9U-L1l" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rkU-53-oOB"/>
                             <constraint firstAttribute="trailing" secondItem="Q1f-uk-NqP" secondAttribute="trailing" id="wIQ-Ve-jfS"/>
                             <constraint firstItem="fV1-9U-L1l" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="z9D-bv-bas"/>
                         </constraints>
@@ -74,8 +74,8 @@
         <!--Tasks View Controller-->
         <scene sceneID="SYj-gm-2VW">
             <objects>
-                <tableViewController id="9QJ-H6-yWT" customClass="TasksViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vXR-CL-28u">
+                <tableViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="9QJ-H6-yWT" customClass="TasksViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="1" sectionFooterHeight="1" id="vXR-CL-28u">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,6 +95,9 @@
                             <outlet property="delegate" destination="9QJ-H6-yWT" id="Dqw-6m-nfR"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="600" height="209"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ncx-4T-zCU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -121,7 +124,7 @@
         <!--Calendar View Controller-->
         <scene sceneID="1oc-KC-zbL">
             <objects>
-                <collectionViewController id="iSY-5b-fVQ" customClass="CalendarViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController automaticallyAdjustsScrollViewInsets="NO" id="iSY-5b-fVQ" customClass="CalendarViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" id="MVQ-HJ-vd5">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="319"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,6 +210,7 @@
                             <outlet property="delegate" destination="iSY-5b-fVQ" id="18G-fx-5ZY"/>
                         </connections>
                     </collectionView>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NS4-7W-2AP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
