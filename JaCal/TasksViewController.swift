@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import CoreData
 
 class TasksViewController: UITableViewController {
+  var tasks: [Task] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -18,6 +20,22 @@ class TasksViewController: UITableViewController {
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //     self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    let delegate = UIApplication.sharedApplication().delegate as AppDelegate
+    let context = delegate.managedObjectContext!
+    let fetchRequest = NSFetchRequest()
+    fetchRequest.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: context)
+    var error: NSError?
+    let fetchedObjects = context.executeFetchRequest(fetchRequest, error: &error)
+    for task in fetchedObjects as [Task] {
+      print(task.title)
+      print(" ")
+      for done in task.dones {
+        let taskDone = done as TaskDone
+        print(NSDate(timeIntervalSinceReferenceDate: taskDone.date))
+      }
+      tasks += [task]
+      println()
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -32,15 +50,20 @@ class TasksViewController: UITableViewController {
 //  }
 
   override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
-    return 2
+    return tasks.count + 1
   }
   
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
-    let cell = tableView.dequeueReusableCellWithIdentifier("task", forIndexPath: indexPath) as UITableViewCell
-  
-    // Configure the cell...
-    cell.textLabel.text = "Hello"
-  
+    let index = indexPath.row
+    let cell = tableView.dequeueReusableCellWithIdentifier(index == tasks.count ? "taskAdd" : "task", forIndexPath: indexPath) as UITableViewCell
+    cell.selectedBackgroundView = UIView()
+    cell.selectedBackgroundView.backgroundColor = tableView.tintColor
+    if index == tasks.count {
+//      cell.imageView.image = cell.imageView.image.imageWithRenderingMode(.AlwaysTemplate)
+//      cell.imageView.tintColor = UIColor.blueColor()
+    } else {
+      cell.textLabel.text = "Hello"
+    }
     return cell
   }
 
