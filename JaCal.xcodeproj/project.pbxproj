@@ -15,6 +15,7 @@
 		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
 		189D74CD19AF1E0000B59278 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CC19AF1E0000B59278 /* IconCell.swift */; };
 		189D74CF19AF25D700B59278 /* FreqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CE19AF25D700B59278 /* FreqController.swift */; };
+		189D74D319B07C5500B59278 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74D219B07C5400B59278 /* TaskCell.swift */; };
 		18A80EDD19ADCC86000B2529 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */; };
 		18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */; };
 		18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE219ADD0E4000B2529 /* DayCell.swift */; };
@@ -48,6 +49,7 @@
 		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
 		189D74CC19AF1E0000B59278 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		189D74CE19AF25D700B59278 /* FreqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreqController.swift; sourceTree = "<group>"; };
+		189D74D219B07C5400B59278 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		18A80EE219ADD0E4000B2529 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				18A80EE219ADD0E4000B2529 /* DayCell.swift */,
 				18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */,
 				189D74CC19AF1E0000B59278 /* IconCell.swift */,
+				189D74D219B07C5400B59278 /* TaskCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 				18A80EDD19ADCC86000B2529 /* CalendarViewController.swift in Sources */,
 				1827A29819ADA44B003EF680 /* ViewController.swift in Sources */,
 				18D27D6519AEC14D009E0AA0 /* TaskDone.swift in Sources */,
+				189D74D319B07C5500B59278 /* TaskCell.swift in Sources */,
 				18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */,
 				1827A29319ADA44A003EF680 /* AppDelegate.swift in Sources */,
 				18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */,

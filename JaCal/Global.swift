@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import UIKit
+import CoreData
 
 var thisMonth: String = {
   let today = NSDate()
@@ -15,4 +17,9 @@ var thisMonth: String = {
   let formatter = NSDateFormatter()
   let str = formatter.monthSymbols[comps.month - 1] as String
   return str
+}()
+
+var managedObjectContext: NSManagedObjectContext = {
+  let delegate = UIApplication.sharedApplication().delegate as AppDelegate
+  return delegate.managedObjectContext!
 }()

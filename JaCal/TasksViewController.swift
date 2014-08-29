@@ -55,16 +55,20 @@ class TasksViewController: UITableViewController {
   
   override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
     let index = indexPath.row
-    let cell = tableView.dequeueReusableCellWithIdentifier(index == tasks.count ? "taskAdd" : "task", forIndexPath: indexPath) as UITableViewCell
-    cell.selectedBackgroundView = UIView()
-    cell.selectedBackgroundView.backgroundColor = tableView.tintColor
     if index == tasks.count {
-//      cell.imageView.image = cell.imageView.image.imageWithRenderingMode(.AlwaysTemplate)
-//      cell.imageView.tintColor = UIColor.blueColor()
+      let cell = tableView.dequeueReusableCellWithIdentifier("taskAdd", forIndexPath: indexPath) as UITableViewCell
+      cell.selectedBackgroundView = UIView()
+      cell.selectedBackgroundView.backgroundColor = tableView.tintColor
+      return cell
     } else {
-      cell.textLabel.text = "Hello"
+      let cell = tableView.dequeueReusableCellWithIdentifier("task", forIndexPath: indexPath) as TaskCell
+      cell.selectedBackgroundView = UIView()
+      cell.selectedBackgroundView.backgroundColor = tableView.tintColor
+      cell.icon.text = tasks[index].icon
+      cell.title.text = tasks[index].title
+      cell.progress.text = "100%"
+      return cell
     }
-    return cell
   }
 
   /*
@@ -102,14 +106,30 @@ class TasksViewController: UITableViewController {
   }
   */
   
-  /*
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
   override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-  // Get the new view controller using [segue destinationViewController].
-  // Pass the selected object to the new view controller.
+    // Get the new view controller using [segue destinationViewController].
+    // Pass the selected object to the new view controller.
+    if segue.identifier == "addTask" {
+      (segue.destinationViewController as TaskFormController).taskController = self
+    }
   }
-  */
-  
+
+  func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
+    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext:managedObjectContext) as Task
+    task.title = title
+    task.icon = icon
+    task.duration = Int16(duration)
+    task.freq = Int16(freq)
+    task.count = Int32(count)
+    task.dones = NSSet()
+    var error: NSError?
+    if !managedObjectContext.save(&error) {
+      print("Whoops, couldn't save: \(error!.localizedDescription)")
+    }
+    tasks.append(task)
+    (view as UITableView).reloadData()
+  }
 }
