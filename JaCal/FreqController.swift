@@ -10,11 +10,12 @@ import UIKit
 
 class FreqController: UIViewController {
   var durations: [String] = [
-    "일주일간", "2주일간", "3주동안", "한달동안", "두달동안", "세달간", "반년동안", "일년동안"
+    "오늘부터", "일주 동안", "이주 동안", "삼주 동안", "한달 동안", "두달 동안", "세달 동안", "반년 동안", "일년 동안"
   ]
   var periods: [String] = [
-    "매일", "매주", "매달", "매분기", "반년마다", "매년",
+    "총", "매일", "매주", "매달", "매분기", "반년마다", "매년",
   ]
+  let maxFreq: [Int] = [ 7, 2, 3, 3, 3, 4, 4, 5, 6 ]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,7 +47,8 @@ class FreqController: UIViewController {
     if component == 0 {
       return durations.count
     } else if component == 1 {
-      return periods.count
+      let period = pickerView.selectedRowInComponent(0)
+      return maxFreq[period]
     } else {
       return 100
     }
@@ -59,6 +61,12 @@ class FreqController: UIViewController {
       return periods[row]
     } else {
       return "\(row+1)회"
+    }
+  }
+
+  func pickerView(pickerView: UIPickerView!, didSelectRow row: Int, inComponent component: Int) {
+    if component == 0 {
+      pickerView.reloadComponent(1)
     }
   }
 }
