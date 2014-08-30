@@ -158,7 +158,10 @@ class TaskFormController: UIViewController {
 
   @IBAction func done(sender: AnyObject) {
     navigationController.popViewControllerAnimated(true)
-    println(navigationController.topViewController)
-    taskController?.addTask(icon.text, title: desc.text, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
+    var title = desc.text
+    if title == "" {
+      title = desc.placeholder
+    }
+    taskController?.addTask(icon.text, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
   }
 }
