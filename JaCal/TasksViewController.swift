@@ -21,23 +21,7 @@ class TasksViewController: UITableViewController {
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //     self.navigationItem.rightBarButtonItem = self.editButtonItem()
     app.tasks = self
-    
-    let delegate = UIApplication.sharedApplication().delegate as AppDelegate
-    let context = delegate.managedObjectContext!
-    let fetchRequest = NSFetchRequest()
-    fetchRequest.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: context)
-    var error: NSError?
-    let fetchedObjects = context.executeFetchRequest(fetchRequest, error: &error)
-    for task in fetchedObjects as [Task] {
-      print(task.title)
-      print(" ")
-      for done in task.dones {
-        let taskDone = done as TaskDone
-        print(NSDate(timeIntervalSinceReferenceDate: taskDone.date))
-      }
-      tasks += [task]
-      println()
-    }
+    tasks = app.목표들()
   }
   
   override func didReceiveMemoryWarning() {

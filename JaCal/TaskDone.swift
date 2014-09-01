@@ -12,6 +12,6 @@ import CoreData
 class TaskDone: NSManagedObject {
 
     @NSManaged var date: NSTimeInterval
-    @NSManaged var task: Task
+    @NSManaged var task: Task?
 
 }

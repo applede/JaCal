@@ -11,7 +11,8 @@ import UIKit
 let reuseIdentifier = "Cell"
 
 class CalendarViewController: UICollectionViewController {
-  
+  var 한일들: [TaskDone] = []
+
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -22,6 +23,7 @@ class CalendarViewController: UICollectionViewController {
     self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
     
     // Do any additional setup after loading the view.
+    한일들 = app.한일들()
   }
   
   override func didReceiveMemoryWarning() {
@@ -62,6 +64,17 @@ class CalendarViewController: UICollectionViewController {
       let day = index + 1 - paddingDays - 7
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("day", forIndexPath:indexPath) as DayCell
       cell.label.text = (day >= 1 && day <= numberOfDaysInMonth) ? String(day) : ""
+      let 오늘 = NSDate()
+      let 달력 = NSCalendar.currentCalendar()
+      let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: 오늘)
+      분해된.day = day
+      let 날짜 = 달력.dateFromComponents(분해된)!
+      for 한일 in 한일들 {
+        let 한일_날짜 = NSDate(timeIntervalSinceReferenceDate: 한일.date)
+        if 한일_날짜 == 날짜 {
+          cell.icon.text = 한일.task?.icon
+        }
+      }
       return cell
     }
   }
@@ -78,8 +91,10 @@ class CalendarViewController: UICollectionViewController {
   override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
     if let task = app.selectedTask() {
-      println(task.icon)
       cell.icon.text = task.icon
+      if cell.label.text != "" {
+        app.실행_추가(문자열에서_날짜(cell.label.text))
+      }
     }
   }
 
@@ -120,11 +135,18 @@ class CalendarViewController: UICollectionViewController {
     let calendar = NSCalendar.currentCalendar()
     let today = NSDate()
     let days = calendar.rangeOfUnit(.CalendarUnitDay, inUnit: .CalendarUnitMonth, forDate: today)
-    println("days \(days.length)")
     return days.length
   }()
 
   func multipleOf(x: Int, _ y: Int) -> Int {
     return (x + y - 1) / y * y
+  }
+
+  func 문자열에서_날짜(문자열: String) -> NSDate {
+    let 달력 = NSCalendar.currentCalendar()
+    let 오늘 = NSDate()
+    let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitTimeZone, fromDate: 오늘)
+    분해된.day = 문자열.toInt()!
+    return 달력.dateFromComponents(분해된)!
   }
 }

@@ -131,6 +131,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     saveContext()
     tasks.addTask(task)
   }
+
+  func 실행_추가(날짜: NSDate) {
+    if let 태스크 = tasks.selectedTask() {
+      let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext) as TaskDone
+      한일.task = 태스크
+      한일.date = 날짜.timeIntervalSinceReferenceDate
+      태스크.dones = 태스크.dones.setByAddingObject(한일)
+      saveContext()
+    }
+  }
+
+  func 목표들() -> [Task] {
+    let 요구 = NSFetchRequest()
+    요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: managedObjectContext)
+    var 에러: NSError?
+    let 불러온거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
+    return 불러온거 as [Task]
+  }
+
+  func 한일들() -> [TaskDone] {
+    let 요구 = NSFetchRequest()
+    요구.entity = NSEntityDescription.entityForName("TaskDone", inManagedObjectContext: managedObjectContext)
+    var 에러: NSError?
+    let 불러들인거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
+    return 불러들인거 as [TaskDone]
+  }
 }
 
 var app: AppDelegate = {
