@@ -100,12 +100,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Replace this implementation with code to handle the error appropriately.
         // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
         NSLog("Unresolved error \(error), \(error!.userInfo)")
-        abort()
+//        abort()
       }
     }
   }
 
-  weak var currentSelectedTask: Task?
+  var tasks: TasksViewController!
+
+  lazy var currentMonth: String = {
+    let today = NSDate()
+    let calendar = NSCalendar.currentCalendar()
+    let comps = calendar.components(.CalendarUnitMonth, fromDate: today)
+    let formatter = NSDateFormatter()
+    let str = formatter.monthSymbols[comps.month - 1] as String
+    return str
+  }()
+  
+  func selectedTask() -> Task? {
+    return tasks.selectedTask()
+  }
+
+  func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
+    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: managedObjectContext) as Task
+    task.title = title
+    task.icon = icon
+    task.duration = Int16(duration)
+    task.freq = Int16(freq)
+    task.count = Int32(count)
+    task.dones = NSSet()
+    saveContext()
+    tasks.addTask(task)
+  }
 }
 
 var app: AppDelegate = {

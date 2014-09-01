@@ -184,16 +184,16 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🏃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gbA-Sl-8dL">
-                                            <rect key="frame" x="20" y="-2" width="30" height="39"/>
+                                            <rect key="frame" x="20" y="-2" width="34" height="39"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="30" id="zcb-Dm-ub2"/>
+                                                <constraint firstAttribute="width" constant="34" id="zcb-Dm-ub2"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="32"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oqo-0D-1Ss">
-                                            <rect key="frame" x="58" y="8" width="484" height="21"/>
+                                            <rect key="frame" x="59" y="9" width="483" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -210,8 +210,8 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="gbA-Sl-8dL" firstAttribute="leading" secondItem="RfG-nF-qnQ" secondAttribute="leading" constant="20" symbolic="YES" id="0vt-aj-O6W"/>
-                                        <constraint firstAttribute="centerY" secondItem="oqo-0D-1Ss" secondAttribute="centerY" id="F5f-3l-Q5B"/>
-                                        <constraint firstItem="oqo-0D-1Ss" firstAttribute="leading" secondItem="gbA-Sl-8dL" secondAttribute="trailing" constant="8" id="Vup-dD-Hy7"/>
+                                        <constraint firstAttribute="centerY" secondItem="oqo-0D-1Ss" secondAttribute="centerY" constant="-1.5" id="F5f-3l-Q5B"/>
+                                        <constraint firstItem="oqo-0D-1Ss" firstAttribute="leading" secondItem="gbA-Sl-8dL" secondAttribute="trailing" constant="5" id="Vup-dD-Hy7"/>
                                         <constraint firstAttribute="centerY" secondItem="zLV-Fc-TCk" secondAttribute="centerY" id="mhg-jq-EAD"/>
                                         <constraint firstAttribute="trailing" secondItem="zLV-Fc-TCk" secondAttribute="trailing" constant="8" id="tFU-zQ-Ox1"/>
                                         <constraint firstItem="zLV-Fc-TCk" firstAttribute="leading" secondItem="oqo-0D-1Ss" secondAttribute="trailing" constant="8" symbolic="YES" id="xhl-9T-b3K"/>

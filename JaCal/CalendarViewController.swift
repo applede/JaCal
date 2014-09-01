@@ -77,7 +77,8 @@ class CalendarViewController: UICollectionViewController {
   
   override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
-    if let task = app.currentSelectedTask {
+    if let task = app.selectedTask() {
+      println(task.icon)
       cell.icon.text = task.icon
     }
   }

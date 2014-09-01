@@ -20,7 +20,6 @@
 		18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */; };
 		18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE219ADD0E4000B2529 /* DayCell.swift */; };
 		18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */; };
-		18D181B019AE1A54009F60E7 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D181AF19AE1A54009F60E7 /* Global.swift */; };
 		18D27D6319AEC14C009E0AA0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6219AEC14C009E0AA0 /* Task.swift */; };
 		18D27D6519AEC14D009E0AA0 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6419AEC14D009E0AA0 /* TaskDone.swift */; };
 		18D27D6819AF1754009E0AA0 /* TaskFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6719AF1754009E0AA0 /* TaskFormController.swift */; };
@@ -54,7 +53,6 @@
 		18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		18A80EE219ADD0E4000B2529 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayCell.swift; sourceTree = "<group>"; };
-		18D181AF19AE1A54009F60E7 /* Global.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		18D27D6219AEC14C009E0AA0 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		18D27D6419AEC14D009E0AA0 /* TaskDone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
 		18D27D6719AF1754009E0AA0 /* TaskFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormController.swift; sourceTree = "<group>"; };
@@ -143,7 +141,6 @@
 				18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */,
 				18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */,
 				18D27D6719AF1754009E0AA0 /* TaskFormController.swift */,
-				18D181AF19AE1A54009F60E7 /* Global.swift */,
 				189D74CE19AF25D700B59278 /* FreqController.swift */,
 			);
 			name = Controller;
@@ -268,7 +265,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				18D181B019AE1A54009F60E7 /* Global.swift in Sources */,
 				18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */,
 				189D74CD19AF1E0000B59278 /* IconCell.swift in Sources */,
 				18D27D6819AF1754009E0AA0 /* TaskFormController.swift in Sources */,

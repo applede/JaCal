@@ -20,6 +20,8 @@ class TasksViewController: UITableViewController {
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
 //     self.navigationItem.rightBarButtonItem = self.editButtonItem()
+    app.tasks = self
+    
     let delegate = UIApplication.sharedApplication().delegate as AppDelegate
     let context = delegate.managedObjectContext!
     let fetchRequest = NSFetchRequest()
@@ -83,7 +85,8 @@ class TasksViewController: UITableViewController {
   override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
     if editingStyle == .Delete {
       // Delete the row from the data source
-      managedObjectContext.deleteObject(tasks[indexPath.row])
+      app.managedObjectContext?.deleteObject(tasks[indexPath.row])
+      app.saveContext()
       tasks.removeAtIndex(indexPath.row)
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     } else if editingStyle == .Insert {
@@ -95,42 +98,23 @@ class TasksViewController: UITableViewController {
   override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
   
   }
-  
 
   // Override to support conditional rearranging of the table view.
   override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-  // Return NO if you do not want the item to be re-orderable.
-  return true
+    // Return NO if you do not want the item to be re-orderable.
+    return true
   }
 
-  // MARK: - Navigation
-  
-  // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-    if segue.identifier == "addTask" {
-      (segue.destinationViewController as TaskFormController).taskController = self
-    }
-  }
-
-  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
-    app.currentSelectedTask = tasks[indexPath.row]
-  }
-
-  func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
-    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext:managedObjectContext) as Task
-    task.title = title
-    task.icon = icon
-    task.duration = Int16(duration)
-    task.freq = Int16(freq)
-    task.count = Int32(count)
-    task.dones = NSSet()
-    var error: NSError?
-    if !managedObjectContext.save(&error) {
-      print("Whoops, couldn't save: \(error!.localizedDescription)")
-    }
+  func addTask(task: Task) {
     tasks.append(task)
     (view as UITableView).reloadData()
+  }
+
+  func selectedTask() -> Task? {
+    let table = view as UITableView
+    if let index = table.indexPathForSelectedRow() {
+      return tasks[index.row]
+    }
+    return nil
   }
 }

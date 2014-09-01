@@ -15,7 +15,7 @@ class ViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
-    self.title = thisMonth
+    self.title = app.currentMonth
   }
 
   override func didReceiveMemoryWarning() {

@@ -23,7 +23,6 @@ class TaskFormController: UIViewController {
   @IBOutlet weak var icon: UILabel!
   @IBOutlet weak var desc: UITextField!
   @IBOutlet weak var picker: UIPickerView!
-  weak var taskController: TasksViewController?
 
   let templates: [TaskTempl] = [
     TaskTempl("🚶", "걷기"),
@@ -162,6 +161,6 @@ class TaskFormController: UIViewController {
     if title == "" {
       title = desc.placeholder
     }
-    taskController?.addTask(icon.text, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
+    app.addTask(icon.text, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
   }
 }
