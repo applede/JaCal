@@ -114,6 +114,10 @@ class TasksViewController: UITableViewController {
     }
   }
 
+  override func tableView(tableView: UITableView!, didSelectRowAtIndexPath indexPath: NSIndexPath!) {
+    app.currentSelectedTask = tasks[indexPath.row]
+  }
+
   func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
     let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext:managedObjectContext) as Task
     task.title = title

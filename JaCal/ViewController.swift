@@ -9,6 +9,9 @@
 import UIKit
 
 class ViewController: UIViewController {
+  var calendar: CalendarViewController!
+  var tasks: TasksViewController!
+
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -20,6 +23,17 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
-
+  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+    switch segue.identifier {
+    case nil:
+      return
+    case "calendar":
+      calendar = segue.destinationViewController as CalendarViewController
+    case "tasks":
+      tasks = segue.destinationViewController as TasksViewController
+    default:
+      return
+    }
+  }
 }
 

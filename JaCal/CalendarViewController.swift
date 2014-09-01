@@ -75,13 +75,13 @@ class CalendarViewController: UICollectionViewController {
   }
   */
   
-  /*
-  // Uncomment this method to specify if the specified item should be selected
-  func collectionView(collectionView: UICollectionView!, shouldSelectItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
-  return true
+  override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+    let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
+    if let task = app.currentSelectedTask {
+      cell.icon.text = task.icon
+    }
   }
-  */
-  
+
   /*
   // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
   func collectionView(collectionView: UICollectionView!, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
