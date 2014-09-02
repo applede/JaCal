@@ -12,6 +12,7 @@ let reuseIdentifier = "Cell"
 
 class CalendarViewController: UICollectionViewController {
   var 한일들: [TaskDone] = []
+  var 한일들_사전: [NSTimeInterval: [TaskDone]] = [:]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,6 +25,13 @@ class CalendarViewController: UICollectionViewController {
     
     // Do any additional setup after loading the view.
     한일들 = app.한일들()
+    for 한일 in 한일들 {
+      if let 그날_한일들 = 한일들_사전[한일.date] {
+        한일들_사전[한일.date] = 그날_한일들 + [한일]
+      } else {
+        한일들_사전[한일.date] = [한일]
+      }
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -64,14 +72,13 @@ class CalendarViewController: UICollectionViewController {
       let day = index + 1 - paddingDays - 7
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("day", forIndexPath:indexPath) as DayCell
       cell.label.text = (day >= 1 && day <= numberOfDaysInMonth) ? String(day) : ""
-      let 오늘 = NSDate()
+
       let 달력 = NSCalendar.currentCalendar()
-      let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: 오늘)
+      let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate())
       분해된.day = day
-      let 날짜 = 달력.dateFromComponents(분해된)!
-      for 한일 in 한일들 {
-        let 한일_날짜 = NSDate(timeIntervalSinceReferenceDate: 한일.date)
-        if 한일_날짜 == 날짜 {
+      let 그날 = 달력.dateFromComponents(분해된)!.timeIntervalSinceReferenceDate
+      if let 그날_한일들 = 한일들_사전[그날] {
+        for 한일 in 그날_한일들 {
           cell.icon.text = 한일.task?.icon
         }
       }
