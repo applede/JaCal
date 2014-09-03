@@ -23,10 +23,10 @@ class ViewController: UIViewController {
     // Dispose of any resources that can be recreated.
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     switch segue.identifier {
-    case nil:
-      return
+//    case nil:
+//      return
     case "calendar":
       calendar = segue.destinationViewController as CalendarViewController
     case "tasks":

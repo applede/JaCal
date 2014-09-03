@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   lazy var managedObjectModel: NSManagedObjectModel = {
     // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
     let modelURL = NSBundle.mainBundle().URLForResource("JaCal", withExtension: "momd")
-    return NSManagedObjectModel(contentsOfURL: modelURL)
+    return NSManagedObjectModel(contentsOfURL: modelURL!)
   }()
 
   lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
@@ -121,7 +121,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
-    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: managedObjectContext) as Task
+    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: managedObjectContext!) as Task
     task.title = title
     task.icon = icon
     task.duration = Int16(duration)
@@ -134,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func 실행_추가(날짜: NSDate) {
     if let 태스크 = tasks.selectedTask() {
-      let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext) as TaskDone
+      let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext!) as TaskDone
       한일.task = 태스크
       한일.date = 날짜.timeIntervalSinceReferenceDate
       태스크.dones = 태스크.dones.setByAddingObject(한일)
@@ -144,7 +144,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func 목표들() -> [Task] {
     let 요구 = NSFetchRequest()
-    요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: managedObjectContext)
+    요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: managedObjectContext!)
     var 에러: NSError?
     let 불러온거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
     return 불러온거 as [Task]
@@ -152,7 +152,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func 한일들() -> [TaskDone] {
     let 요구 = NSFetchRequest()
-    요구.entity = NSEntityDescription.entityForName("TaskDone", inManagedObjectContext: managedObjectContext)
+    요구.entity = NSEntityDescription.entityForName("TaskDone", inManagedObjectContext: managedObjectContext!)
     var 에러: NSError?
     let 불러들인거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
     return 불러들인거 as [TaskDone]

@@ -8,7 +8,7 @@
 
 import UIKit
 
-let reuseIdentifier = "Cell"
+//let reuseIdentifier = "Cell"
 
 class CalendarViewController: UICollectionViewController {
   var 한일들: [TaskDone] = []
@@ -21,8 +21,8 @@ class CalendarViewController: UICollectionViewController {
     // self.clearsSelectionOnViewWillAppear = false
     
     // Register cell classes
-    self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-    
+//    self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+
     // Do any additional setup after loading the view.
     한일들 = app.한일들()
     for 한일 in 한일들 {
@@ -53,20 +53,20 @@ class CalendarViewController: UICollectionViewController {
 
   let numberOfWeekdays = 7
 
-  override func numberOfSectionsInCollectionView(collectionView: UICollectionView!) -> Int {
+  override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
     return 1
   }
 
-  override func collectionView(collectionView: UICollectionView!, numberOfItemsInSection section: Int) -> Int {
+  override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return multipleOf(numberOfWeekdays + numberOfDaysInMonth + paddingDays, numberOfWeekdays)
   }
 
-  override func collectionView(collectionView: UICollectionView!, cellForItemAtIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell! {
+  override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let index = indexPath.indexAtPosition(1)
     if index < 7 {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("weekday", forIndexPath:indexPath) as WeekdayCell
       let formatter = NSDateFormatter()
-      cell.label.text = formatter.shortWeekdaySymbols[index] as String
+      cell.label.text = formatter.shortWeekdaySymbols[index] as? String
       return cell
     } else {
       let day = index + 1 - paddingDays - 7
@@ -95,12 +95,12 @@ class CalendarViewController: UICollectionViewController {
   }
   */
   
-  override func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
+  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
     if let task = app.selectedTask() {
       cell.icon.text = task.icon
       if cell.label.text != "" {
-        app.실행_추가(문자열에서_날짜(cell.label.text))
+        app.실행_추가(문자열에서_날짜(cell.label.text!))
       }
     }
   }

@@ -101,7 +101,7 @@ class TaskFormController: UIViewController {
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue!, sender: AnyObject!) {
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
     println(segue)
@@ -156,11 +156,11 @@ class TaskFormController: UIViewController {
   }
 
   @IBAction func done(sender: AnyObject) {
-    navigationController.popViewControllerAnimated(true)
+    navigationController?.popViewControllerAnimated(true)
     var title = desc.text
     if title == "" {
       title = desc.placeholder
     }
-    app.addTask(icon.text, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
+    app.addTask(icon.text!, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
   }
 }

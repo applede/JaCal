@@ -35,11 +35,11 @@ class TasksViewController: UITableViewController {
 //    return 1
 //  }
 
-  override func tableView(tableView: UITableView!, numberOfRowsInSection section: Int) -> Int {
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tasks.count + 1
   }
   
-  override func tableView(tableView: UITableView!, cellForRowAtIndexPath indexPath: NSIndexPath!) -> UITableViewCell! {
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let index = indexPath.row
     if index == tasks.count {
       let cell = tableView.dequeueReusableCellWithIdentifier("taskAdd", forIndexPath: indexPath) as UITableViewCell
@@ -66,7 +66,7 @@ class TasksViewController: UITableViewController {
   */
   
   // Override to support editing the table view.
-  override func tableView(tableView: UITableView!, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       // Delete the row from the data source
       app.managedObjectContext?.deleteObject(tasks[indexPath.row])
@@ -79,12 +79,12 @@ class TasksViewController: UITableViewController {
   }
 
   // Override to support rearranging the table view.
-  override func tableView(tableView: UITableView!, moveRowAtIndexPath fromIndexPath: NSIndexPath!, toIndexPath: NSIndexPath!) {
+  override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
   
   }
 
   // Override to support conditional rearranging of the table view.
-  override func tableView(tableView: UITableView!, canMoveRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return NO if you do not want the item to be re-orderable.
     return true
   }
