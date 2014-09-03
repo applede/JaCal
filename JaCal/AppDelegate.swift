@@ -132,14 +132,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tasks.addTask(task)
   }
 
-  func 실행_추가(날짜: NSDate) {
-    if let 태스크 = tasks.selectedTask() {
-      let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext!) as TaskDone
-      한일.task = 태스크
-      한일.date = 날짜.timeIntervalSinceReferenceDate
-      태스크.dones = 태스크.dones.setByAddingObject(한일)
-      saveContext()
-    }
+  func 한걸로_기록(목표: Task, 를 날짜에: NSTimeInterval) {
+    let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext!) as TaskDone
+    한일.task = 목표
+    한일.date = 날짜에
+    목표.dones = 목표.dones.setByAddingObject(한일)
+    saveContext()
+  }
+
+  func 기록_삭제(한적: TaskDone) {
+    managedObjectContext?.deleteObject(한적)
+    saveContext()
   }
 
   func 목표들() -> [Task] {

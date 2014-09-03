@@ -11,8 +11,8 @@ import UIKit
 //let reuseIdentifier = "Cell"
 
 class CalendarViewController: UICollectionViewController {
-  var 한일들: [TaskDone] = []
-  var 한일들_사전: [NSTimeInterval: [TaskDone]] = [:]
+//  var 한일들: [TaskDone] = []
+  var 한일들: [NSTimeInterval: [TaskDone]] = [:]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -24,12 +24,12 @@ class CalendarViewController: UICollectionViewController {
 //    self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
     // Do any additional setup after loading the view.
-    한일들 = app.한일들()
-    for 한일 in 한일들 {
-      if let 그날_한일들 = 한일들_사전[한일.date] {
-        한일들_사전[한일.date] = 그날_한일들 + [한일]
+    let 일들 = app.한일들()
+    for 한일 in 일들 {
+      if let 그날_한일들 = 한일들[한일.date] {
+        한일들[한일.date] = 그날_한일들 + [한일]
       } else {
-        한일들_사전[한일.date] = [한일]
+        한일들[한일.date] = [한일]
       }
     }
   }
@@ -77,7 +77,7 @@ class CalendarViewController: UICollectionViewController {
       let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate())
       분해된.day = day
       let 그날 = 달력.dateFromComponents(분해된)!.timeIntervalSinceReferenceDate
-      if let 그날_한일들 = 한일들_사전[그날] {
+      if let 그날_한일들 = 한일들[그날] {
         for 한일 in 그날_한일들 {
           cell.icon.text = 한일.task?.icon
         }
@@ -97,12 +97,30 @@ class CalendarViewController: UICollectionViewController {
   
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
-    if let task = app.selectedTask() {
-      cell.icon.text = task.icon
+    if let 선택된_목표 = app.selectedTask() {
       if cell.label.text != "" {
-        app.실행_추가(문자열에서_날짜(cell.label.text!))
+        let 날짜에 = 문자열에서(cell.label.text!)
+        if let 기록 = 를_한_기록(한일들[날짜에], 중에: 선택된_목표) {
+          app.기록_삭제(기록)
+          cell.icon.text = ""
+        } else {
+          cell.icon.text = 선택된_목표.icon
+          app.한걸로_기록(선택된_목표, 를: 날짜에)
+        }
       }
     }
+  }
+
+  func 를_한_기록(한일들: [TaskDone]?, 중에 목표: Task) -> TaskDone? {
+    if var 일들 = 한일들 {
+      for (ㅇ, 기록) in enumerate(일들) {
+        if 기록.task == 목표 {
+          일들.removeAtIndex(ㅇ)
+          return 기록
+        }
+      }
+    }
+    return nil
   }
 
   /*
@@ -149,11 +167,11 @@ class CalendarViewController: UICollectionViewController {
     return (x + y - 1) / y * y
   }
 
-  func 문자열에서_날짜(문자열: String) -> NSDate {
+  func 문자열에서(문자열: String) -> NSTimeInterval {
     let 달력 = NSCalendar.currentCalendar()
     let 오늘 = NSDate()
-    let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitTimeZone, fromDate: 오늘)
-    분해된.day = 문자열.toInt()!
-    return 달력.dateFromComponents(분해된)!
+    let 구성요소 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitTimeZone, fromDate: 오늘)
+    구성요소.day = 문자열.toInt()!
+    return 달력.dateFromComponents(구성요소)!.timeIntervalSinceReferenceDate
   }
 }
