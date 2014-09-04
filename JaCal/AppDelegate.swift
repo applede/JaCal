@@ -52,8 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   lazy var managedObjectModel: NSManagedObjectModel = {
     // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-    let modelURL = NSBundle.mainBundle().URLForResource("JaCal", withExtension: "momd")
-    return NSManagedObjectModel(contentsOfURL: modelURL!)
+//    let modelURL = NSBundle.mainBundle().URLForResource("JaCal", withExtension: "momd")
+//    return NSManagedObjectModel(contentsOfURL: modelURL!)
+    return NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())
   }()
 
   lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
@@ -86,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     if coordinator == nil {
       return nil
     }
-    var managedObjectContext = NSManagedObjectContext()
+    var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
     managedObjectContext.persistentStoreCoordinator = coordinator
     return managedObjectContext
   }()
@@ -133,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func 한걸로_기록(목표: Task, 를 날짜에: NSTimeInterval) {
-    let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone", inManagedObjectContext: managedObjectContext!) as TaskDone
+    let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone" as NSString, inManagedObjectContext: managedObjectContext!) as TaskDone
     한일.task = 목표
     한일.date = 날짜에
     목표.dones = 목표.dones.setByAddingObject(한일)
@@ -154,11 +155,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func 한일들() -> [TaskDone] {
+//    println(managedObjectContext?.persistentStoreCoordinator.managedObjectModel.entities)
     let 요구 = NSFetchRequest()
-    요구.entity = NSEntityDescription.entityForName("TaskDone", inManagedObjectContext: managedObjectContext!)
+    요구.entity = NSEntityDescription.entityForName("TaskDone" as NSString, inManagedObjectContext: managedObjectContext!)
     var 에러: NSError?
     let 불러들인거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
     return 불러들인거 as [TaskDone]
+//    return []
   }
 }
 
