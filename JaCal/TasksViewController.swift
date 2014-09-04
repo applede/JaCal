@@ -69,7 +69,7 @@ class TasksViewController: UITableViewController {
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       // Delete the row from the data source
-      app.managedObjectContext?.deleteObject(tasks[indexPath.row])
+      app.관리된_객체_맥락.deleteObject(tasks[indexPath.row])
       app.saveContext()
       tasks.removeAtIndex(indexPath.row)
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)

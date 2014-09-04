@@ -42,67 +42,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     self.saveContext()
   }
 
-  // MARK: - Core Data stack
-
-  lazy var applicationDocumentsDirectory: NSURL = {
-    // The directory the application uses to store the Core Data store file. This code uses a directory named "jake.JaCal" in the application's documents Application Support directory.
-    let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
-    return urls[urls.count-1] as NSURL
-  }()
-
-  lazy var managedObjectModel: NSManagedObjectModel = {
-    // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
-//    let modelURL = NSBundle.mainBundle().URLForResource("JaCal", withExtension: "momd")
-//    return NSManagedObjectModel(contentsOfURL: modelURL!)
-    return NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())
-  }()
-
-  lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator? = {
-    // The persistent store coordinator for the application. This implementation creates and return a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
-    // Create the coordinator and store
-    var coordinator: NSPersistentStoreCoordinator? = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
-    let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("JaCal.sqlite")
-    var error: NSError? = nil
-    var failureReason = "There was an error creating or loading the application's saved data."
-    if coordinator!.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil, error: &error) == nil {
-      coordinator = nil
-      // Report any error we got.
-      let dict = NSMutableDictionary()
-      dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
-      dict[NSLocalizedFailureReasonErrorKey] = failureReason
-      dict[NSUnderlyingErrorKey] = error
-      error = NSError.errorWithDomain("YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
-      // Replace this with code to handle the error appropriately.
-      // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-      NSLog("Unresolved error \(error), \(error!.userInfo)")
-      abort()
-    }
-    
-    return coordinator
-  }()
-
-  lazy var managedObjectContext: NSManagedObjectContext? = {
-    // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
-    let coordinator = self.persistentStoreCoordinator
-    if coordinator == nil {
-      return nil
-    }
-    var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
-    managedObjectContext.persistentStoreCoordinator = coordinator
-    return managedObjectContext
-  }()
-
   // MARK: - Core Data Saving support
 
   func saveContext () {
-    if let moc = self.managedObjectContext {
-      var error: NSError? = nil
-      if moc.hasChanges && !moc.save(&error) {
-        // Replace this implementation with code to handle the error appropriately.
-        // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-        NSLog("Unresolved error \(error), \(error!.userInfo)")
+    var error: NSError? = nil
+    if 관리된_객체_맥락.hasChanges && !관리된_객체_맥락.save(&error) {
+      // Replace this implementation with code to handle the error appropriately.
+      // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+      NSLog("Unresolved error \(error), \(error!.userInfo)")
 //        abort()
-      }
     }
   }
 
@@ -122,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
-    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: managedObjectContext!) as Task
+    let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: 관리된_객체_맥락) as Task
     task.title = title
     task.icon = icon
     task.duration = Int16(duration)
@@ -133,36 +81,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tasks.addTask(task)
   }
 
-  func 한걸로_기록(목표: Task, 를 날짜에: NSTimeInterval) {
-    let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone" as NSString, inManagedObjectContext: managedObjectContext!) as TaskDone
+  func 한걸로_기록(목표: Task, 를 날짜에: NSTimeInterval) -> TaskDone {
+    let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone" as NSString, inManagedObjectContext: 관리된_객체_맥락) as TaskDone
     한일.task = 목표
     한일.date = 날짜에
     목표.dones = 목표.dones.setByAddingObject(한일)
     saveContext()
+    return 한일
   }
 
   func 기록_삭제(한적: TaskDone) {
-    managedObjectContext?.deleteObject(한적)
+    관리된_객체_맥락.deleteObject(한적)
     saveContext()
   }
 
   func 목표들() -> [Task] {
     let 요구 = NSFetchRequest()
-    요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: managedObjectContext!)
+    요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: 관리된_객체_맥락)
     var 에러: NSError?
-    let 불러온거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
+    let 불러온거 = 관리된_객체_맥락.executeFetchRequest(요구, error: &에러)
     return 불러온거 as [Task]
   }
 
-  func 한일들() -> [TaskDone] {
-//    println(managedObjectContext?.persistentStoreCoordinator.managedObjectModel.entities)
+  func 기록들() -> [TaskDone] {
     let 요구 = NSFetchRequest()
-    요구.entity = NSEntityDescription.entityForName("TaskDone" as NSString, inManagedObjectContext: managedObjectContext!)
+    요구.entity = NSEntityDescription.entityForName("TaskDone" as NSString, inManagedObjectContext: 관리된_객체_맥락)
     var 에러: NSError?
-    let 불러들인거 = managedObjectContext?.executeFetchRequest(요구, error: &에러)
+    let 불러들인거 = 관리된_객체_맥락.executeFetchRequest(요구, error: &에러)
     return 불러들인거 as [TaskDone]
-//    return []
   }
+
+  lazy var 관리된_객체_맥락: NSManagedObjectContext = {
+    let 모델 = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())
+    let 지속저장코디 = NSPersistentStoreCoordinator(managedObjectModel: 모델)
+
+    let 유알엘 = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.URLByAppendingPathComponent("JaCal.sqlite")
+
+    let 옵션 = [NSPersistentStoreFileProtectionKey: NSFileProtectionComplete,  NSMigratePersistentStoresAutomaticallyOption: true]
+    var 에러: NSError? = nil
+    var 저장소 = 지속저장코디.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:유알엘, options:옵션, error:&에러)
+    if 저장소 == nil {
+      NSLog("Error adding persistent store. Error \(에러)")
+
+      var 삭제에러: NSError? = nil
+      if !NSFileManager.defaultManager().removeItemAtURL(유알엘!, error:&삭제에러) {
+        에러 = nil;
+        저장소 = 지속저장코디.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:유알엘, options: 옵션, error:&에러)
+      }
+
+      if 저장소 == nil {
+        // Also inform the user...
+        NSLog("Failed to create persistent store. Error \(에러). Delete error \(삭제에러)")
+        abort()
+      }
+    }
+
+    let 맥락 = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+    맥락.persistentStoreCoordinator = 지속저장코디
+    return 맥락
+  }()
 }
 
 var app: AppDelegate = {

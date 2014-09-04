@@ -24,13 +24,10 @@ class CalendarViewController: UICollectionViewController {
 //    self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
 
     // Do any additional setup after loading the view.
-    let 일들 = app.한일들()
-    for 한일 in 일들 {
-      if let 그날_한일들 = 한일들[한일.date] {
-        한일들[한일.date] = 그날_한일들 + [한일]
-      } else {
-        한일들[한일.date] = [한일]
-      }
+    let 기록들 = app.기록들()
+    for 기록 in 기록들 {
+      추가(기록.date, 한일: 기록)
+      println("\(기록.task?.title) \(기록.date)")
     }
   }
   
@@ -105,9 +102,18 @@ class CalendarViewController: UICollectionViewController {
           cell.icon.text = ""
         } else {
           cell.icon.text = 선택된_목표.icon
-          app.한걸로_기록(선택된_목표, 를: 날짜에)
+          let 기록 = app.한걸로_기록(선택된_목표, 를: 날짜에)
+          추가(날짜에, 한일: 기록)
         }
       }
+    }
+  }
+
+  func 추가(날짜에: NSTimeInterval, 한일 기록: TaskDone) {
+    if 한일들[날짜에] == nil {
+      한일들[날짜에] = [기록]
+    } else {
+      한일들[날짜에]?.append(기록)
     }
   }
 
