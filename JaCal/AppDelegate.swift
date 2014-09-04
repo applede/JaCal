@@ -81,16 +81,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     tasks.addTask(task)
   }
 
-  func 한걸로_기록(목표: Task, 를 날짜에: NSTimeInterval) -> TaskDone {
+  func 한걸로(를 목표: Task, 에 날짜: NSTimeInterval) -> TaskDone {
     let 한일 = NSEntityDescription.insertNewObjectForEntityForName("TaskDone" as NSString, inManagedObjectContext: 관리된_객체_맥락) as TaskDone
     한일.task = 목표
-    한일.date = 날짜에
+    한일.date = 날짜
     목표.dones = 목표.dones.setByAddingObject(한일)
     saveContext()
     return 한일
   }
 
-  func 기록_삭제(한적: TaskDone) {
+  func 삭제(을 한적: TaskDone) {
     관리된_객체_맥락.deleteObject(한적)
     saveContext()
   }

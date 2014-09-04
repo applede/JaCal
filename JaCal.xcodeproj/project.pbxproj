@@ -13,6 +13,7 @@
 		1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29919ADA44B003EF680 /* Main.storyboard */; };
 		1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29C19ADA44B003EF680 /* Images.xcassets */; };
 		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
+		187E1C5619B8980400B657DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E1C5519B8980400B657DD /* Extensions.swift */; };
 		189D74CD19AF1E0000B59278 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CC19AF1E0000B59278 /* IconCell.swift */; };
 		189D74CF19AF25D700B59278 /* FreqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CE19AF25D700B59278 /* FreqController.swift */; };
 		189D74D319B07C5500B59278 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74D219B07C5400B59278 /* TaskCell.swift */; };
@@ -46,6 +47,7 @@
 		1827A2A219ADA44B003EF680 /* JaCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827A2A719ADA44B003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
+		187E1C5519B8980400B657DD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		189D74CC19AF1E0000B59278 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		189D74CE19AF25D700B59278 /* FreqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreqController.swift; sourceTree = "<group>"; };
 		189D74D219B07C5400B59278 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				1827A29C19ADA44B003EF680 /* Images.xcassets */,
 				1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */,
 				1827A29019ADA44A003EF680 /* Supporting Files */,
+				187E1C5519B8980400B657DD /* Extensions.swift */,
 			);
 			path = JaCal;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */,
 				18D27D6319AEC14C009E0AA0 /* Task.swift in Sources */,
 				1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */,
+				187E1C5619B8980400B657DD /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

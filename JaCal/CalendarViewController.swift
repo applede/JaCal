@@ -12,7 +12,7 @@ import UIKit
 
 class CalendarViewController: UICollectionViewController {
 //  var 한일들: [TaskDone] = []
-  var 한일들: [NSTimeInterval: [TaskDone]] = [:]
+  var 에_한일들: [NSTimeInterval: [TaskDone]] = [:]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -26,7 +26,7 @@ class CalendarViewController: UICollectionViewController {
     // Do any additional setup after loading the view.
     let 기록들 = app.기록들()
     for 기록 in 기록들 {
-      추가(기록.date, 한일: 기록)
+      추가(에: 기록.date, 을: 기록)
       println("\(기록.task?.title) \(기록.date)")
     }
   }
@@ -74,11 +74,7 @@ class CalendarViewController: UICollectionViewController {
       let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate())
       분해된.day = day
       let 그날 = 달력.dateFromComponents(분해된)!.timeIntervalSinceReferenceDate
-      if let 그날_한일들 = 한일들[그날] {
-        for 한일 in 그날_한일들 {
-          cell.icon.text = 한일.task?.icon
-        }
-      }
+      에_한일들[그날]?.각각의 { cell.icon.text = $0.task?.icon }
       return cell
     }
   }
@@ -96,28 +92,27 @@ class CalendarViewController: UICollectionViewController {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
     if let 선택된_목표 = app.selectedTask() {
       if cell.label.text != "" {
-        let 날짜에 = 문자열에서(cell.label.text!)
-        if let 기록 = 를_한_기록(한일들[날짜에], 중에: 선택된_목표) {
-          app.기록_삭제(기록)
-          cell.icon.text = ""
+        let 날짜 = 문자열에서(cell.label.text!)
+        if let 기록 = 찾은(중에: &에_한일들[날짜], 를: 선택된_목표) {
+          app.삭제(을: 기록)
         } else {
-          cell.icon.text = 선택된_목표.icon
-          let 기록 = app.한걸로_기록(선택된_목표, 를: 날짜에)
-          추가(날짜에, 한일: 기록)
+          let 기록 = app.한걸로(를: 선택된_목표, 에: 날짜)
+          추가(에: 날짜, 을: 기록)
         }
+        cell.icon.text = 아이콘들(에서: 에_한일들[날짜])
       }
     }
   }
 
-  func 추가(날짜에: NSTimeInterval, 한일 기록: TaskDone) {
-    if 한일들[날짜에] == nil {
-      한일들[날짜에] = [기록]
+  func 추가(에 날짜: NSTimeInterval, 을 기록: TaskDone) {
+    if 에_한일들[날짜] == nil {
+      에_한일들[날짜] = [기록]
     } else {
-      한일들[날짜에]?.append(기록)
+      에_한일들[날짜]?.append(기록)
     }
   }
 
-  func 를_한_기록(한일들: [TaskDone]?, 중에 목표: Task) -> TaskDone? {
+  func 찾은(inout 중에 한일들: [TaskDone]?, 를 목표: Task) -> TaskDone? {
     if var 일들 = 한일들 {
       for (ㅇ, 기록) in enumerate(일들) {
         if 기록.task == 목표 {
@@ -127,6 +122,19 @@ class CalendarViewController: UICollectionViewController {
       }
     }
     return nil
+  }
+
+  func 아이콘들(에서 한일들: [TaskDone]?) -> String {
+    if let 일들 = 한일들 {
+      return 일들.reduce("") { 문자열, 기록 in
+        if 기록.task == nil {
+          return 문자열
+        } else {
+          return 문자열 + 기록.task!.icon
+        }
+      }
+    }
+    return ""
   }
 
   /*
