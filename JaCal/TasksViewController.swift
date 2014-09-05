@@ -52,7 +52,7 @@ class TasksViewController: UITableViewController {
       cell.selectedBackgroundView.backgroundColor = tableView.tintColor
       cell.icon.text = tasks[index].icon
       cell.title.text = tasks[index].title
-      cell.progress.text = "0%"
+      cell.progress.text = 달성율(의: tasks[index])
       return cell
     }
   }
@@ -100,5 +100,25 @@ class TasksViewController: UITableViewController {
       return tasks[index.row]
     }
     return nil
+  }
+
+  func 달성율_계산() {
+    let 테이블 = view as UITableView
+    if let 인덱스 = 테이블.indexPathForSelectedRow() {
+      let 셀 = 테이블.cellForRowAtIndexPath(인덱스) as TaskCell
+      let 목표 = tasks[인덱스.row]
+      println("duration \(목표.duration) freq \(목표.freq) count \(목표.count)")
+      셀.progress.text = 달성율(의: 목표)
+    }
+  }
+
+  func 달성율(의 목표: Task) -> String {
+    var 달성율: Float = 0
+    if 목표.duration == 0 {
+      if 목표.freq == 0 {
+        달성율 = Float(목표.dones.count) / Float(목표.count)
+      }
+    }
+    return String(format: "%.0f%%", 달성율 * 100)
   }
 }

@@ -161,6 +161,6 @@ class TaskFormController: UIViewController {
     if title == "" {
       title = desc.placeholder
     }
-    app.addTask(icon.text!, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2))
+    app.addTask(icon.text!, title: title, duration: picker.selectedRowInComponent(0), freq: picker.selectedRowInComponent(1), count: picker.selectedRowInComponent(2) + 1)
   }
 }

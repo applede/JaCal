@@ -100,6 +100,7 @@ class CalendarViewController: UICollectionViewController {
           추가(에: 날짜, 을: 기록)
         }
         cell.icon.text = 아이콘들(에서: 에_한일들[날짜])
+        app.tasks.달성율_계산()
       }
     }
   }
