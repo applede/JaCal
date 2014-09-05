@@ -74,7 +74,7 @@ class CalendarViewController: UICollectionViewController {
       let 분해된 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate())
       분해된.day = day
       let 그날 = 달력.dateFromComponents(분해된)!.timeIntervalSinceReferenceDate
-      에_한일들[그날]?.각각의 { cell.icon.text = $0.task?.icon }
+      cell.icon.text = 아이콘들(에서: 에_한일들[그날])
       return cell
     }
   }
@@ -127,11 +127,9 @@ class CalendarViewController: UICollectionViewController {
   func 아이콘들(에서 한일들: [TaskDone]?) -> String {
     if let 일들 = 한일들 {
       return 일들.reduce("") { 문자열, 기록 in
-        if 기록.task == nil {
-          return 문자열
-        } else {
-          return 문자열 + 기록.task!.icon
-        }
+        기록.task == nil ? 문자열 :
+                          countElements(문자열) == 2 ? 문자열 + "\n" + 기록.task!.icon :
+                                                      문자열 + 기록.task!.icon
       }
     }
     return ""
