@@ -66,135 +66,48 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="아이콘" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qlI-VC-JIE">
-                                <rect key="frame" x="16" y="14" width="44.5" height="20.5"/>
+                                <rect key="frame" x="20" y="14.5" width="44.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RH-q0-wa5">
-                                <rect key="frame" x="68" y="8" width="511.5" height="30"/>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3RH-q0-wa5">
+                                <rect key="frame" x="72" y="8" width="507.5" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="byM-Ns-Zeq"/>
-                                    <constraint firstAttribute="width" constant="40" id="wPa-tW-Gju"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <state key="normal" title="🏃">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="wPa-tW-Gju"/>
-                                    </mask>
-                                </variation>
                                 <connections>
-                                    <segue destination="w9s-g9-7nB" kind="custom" identifier="아이콘" customClass="HalfSegue" id="5xF-Na-iVQ"/>
+                                    <segue destination="w9s-g9-7nB" kind="custom" identifier="아이콘" customClass="HalfSegue" id="mKh-bo-baC"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6A-qc-M9m">
-                                <rect key="frame" x="16" y="49" width="29.5" height="20.5"/>
+                                <rect key="frame" x="20" y="49" width="29.5" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="예: 달리기" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Da-tlE">
-                                <rect key="frame" x="68" y="46" width="515.5" height="30"/>
+                                <rect key="frame" x="72" y="46" width="511.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OhD-LH-PhZ">
-                                <rect key="frame" x="20" y="84" width="120" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="ZfM-eN-j3d"/>
-                                </constraints>
-                                <state key="normal" title="2015년 12월 31일">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW8-3L-S83">
-                                <rect key="frame" x="20" y="122" width="120" height="30"/>
-                                <state key="normal" title="2015년 9월 12일">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="부터" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eEo-9a-mL3">
-                                <rect key="frame" x="148" y="88" width="29.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="동안" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T65-jc-hKE">
-                                <rect key="frame" x="550" y="126" width="29.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="회" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fvM-0U-x53">
-                                <rect key="frame" x="186" y="164.5" width="15" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SI5-eX-l42">
-                                <rect key="frame" x="148" y="160" width="30" height="30"/>
-                                <state key="normal" title="300">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="까지" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2g5-x1-rA1">
-                                <rect key="frame" x="148" y="126" width="29.5" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Aze-VO-52p">
-                                <rect key="frame" x="20" y="160" width="120" height="30"/>
-                                <state key="normal" title="매일">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v4Z-Ma-WD8">
-                                <rect key="frame" x="472" y="122" width="70" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="70" id="pyI-j8-Kc6"/>
-                                </constraints>
-                                <state key="normal" title="일년">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="T65-jc-hKE" secondAttribute="trailing" constant="20" symbolic="YES" id="0l6-4a-B4C"/>
-                            <constraint firstItem="SI5-eX-l42" firstAttribute="baseline" secondItem="Aze-VO-52p" secondAttribute="baseline" id="1JC-yp-isB"/>
-                            <constraint firstItem="SI5-eX-l42" firstAttribute="leading" secondItem="Aze-VO-52p" secondAttribute="trailing" constant="8" symbolic="YES" id="2dX-3a-3ih"/>
-                            <constraint firstItem="T65-jc-hKE" firstAttribute="leading" secondItem="v4Z-Ma-WD8" secondAttribute="trailing" constant="8" symbolic="YES" id="2tY-bc-eBD"/>
                             <constraint firstAttribute="trailing" secondItem="3RH-q0-wa5" secondAttribute="trailing" constant="20" symbolic="YES" id="5E7-Rs-Q4v"/>
-                            <constraint firstItem="T65-jc-hKE" firstAttribute="baseline" secondItem="v4Z-Ma-WD8" secondAttribute="baseline" id="5J7-0F-ize"/>
                             <constraint firstItem="3RH-q0-wa5" firstAttribute="baseline" secondItem="qlI-VC-JIE" secondAttribute="baseline" id="8JM-aa-Vtf"/>
-                            <constraint firstItem="OhD-LH-PhZ" firstAttribute="top" secondItem="Nar-Da-tlE" secondAttribute="bottom" constant="8" symbolic="YES" id="CGR-Vv-joD"/>
-                            <constraint firstItem="eEo-9a-mL3" firstAttribute="leading" secondItem="OhD-LH-PhZ" secondAttribute="trailing" constant="8" symbolic="YES" id="H88-An-iY9"/>
-                            <constraint firstItem="SI5-eX-l42" firstAttribute="top" secondItem="v4Z-Ma-WD8" secondAttribute="bottom" constant="8" symbolic="YES" id="HuE-FW-vnB"/>
-                            <constraint firstItem="SI5-eX-l42" firstAttribute="baseline" secondItem="fvM-0U-x53" secondAttribute="baseline" id="HyZ-tX-XB6"/>
                             <constraint firstItem="3RH-q0-wa5" firstAttribute="leading" secondItem="qlI-VC-JIE" secondAttribute="trailing" constant="8" symbolic="YES" id="KEx-zc-DpF"/>
                             <constraint firstItem="3RH-q0-wa5" firstAttribute="top" secondItem="sSq-pd-Ajp" secondAttribute="bottom" constant="8" symbolic="YES" id="SJm-ho-DV4"/>
-                            <constraint firstItem="OhD-LH-PhZ" firstAttribute="trailing" secondItem="YW8-3L-S83" secondAttribute="trailing" id="STm-lq-WTe"/>
-                            <constraint firstItem="OhD-LH-PhZ" firstAttribute="leading" secondItem="YW8-3L-S83" secondAttribute="leading" id="U8j-QA-Jjd"/>
-                            <constraint firstItem="2g5-x1-rA1" firstAttribute="baseline" secondItem="v4Z-Ma-WD8" secondAttribute="baseline" id="Ue5-Hu-ieN"/>
-                            <constraint firstItem="Aze-VO-52p" firstAttribute="top" secondItem="YW8-3L-S83" secondAttribute="bottom" constant="8" symbolic="YES" id="VfH-dq-QmU"/>
-                            <constraint firstItem="OhD-LH-PhZ" firstAttribute="leading" secondItem="teP-QM-Qdd" secondAttribute="leading" constant="20" symbolic="YES" id="WNh-Zy-Jyt"/>
-                            <constraint firstItem="eEo-9a-mL3" firstAttribute="baseline" secondItem="OhD-LH-PhZ" secondAttribute="baseline" id="Wu6-cp-IKQ"/>
-                            <constraint firstItem="YW8-3L-S83" firstAttribute="top" secondItem="OhD-LH-PhZ" secondAttribute="bottom" constant="8" symbolic="YES" id="YBh-i2-ut9"/>
-                            <constraint firstItem="2g5-x1-rA1" firstAttribute="baseline" secondItem="YW8-3L-S83" secondAttribute="baseline" id="aOe-7m-HbT"/>
                             <constraint firstItem="Nar-Da-tlE" firstAttribute="leading" secondItem="3RH-q0-wa5" secondAttribute="leading" id="eSQ-Jg-pUd"/>
                             <constraint firstAttribute="trailing" secondItem="Nar-Da-tlE" secondAttribute="trailing" constant="16" id="gOV-cA-j4Q"/>
                             <constraint firstItem="Nar-Da-tlE" firstAttribute="top" secondItem="3RH-q0-wa5" secondAttribute="bottom" constant="8" symbolic="YES" id="kZV-S9-kUc"/>
-                            <constraint firstItem="fvM-0U-x53" firstAttribute="leading" secondItem="SI5-eX-l42" secondAttribute="trailing" constant="8" symbolic="YES" id="omH-9H-tfM"/>
-                            <constraint firstItem="2g5-x1-rA1" firstAttribute="leading" secondItem="YW8-3L-S83" secondAttribute="trailing" constant="8" symbolic="YES" id="qSC-2m-3i8"/>
-                            <constraint firstItem="qlI-VC-JIE" firstAttribute="leading" secondItem="teP-QM-Qdd" secondAttribute="leading" constant="16" id="qyk-1w-1hN"/>
+                            <constraint firstItem="qlI-VC-JIE" firstAttribute="leading" secondItem="teP-QM-Qdd" secondAttribute="leading" constant="20" symbolic="YES" id="qyk-1w-1hN"/>
                             <constraint firstItem="Nar-Da-tlE" firstAttribute="baseline" secondItem="G6A-qc-M9m" secondAttribute="baseline" id="rXA-Zl-e2F"/>
                             <constraint firstItem="qlI-VC-JIE" firstAttribute="leading" secondItem="G6A-qc-M9m" secondAttribute="leading" id="sIJ-2K-Iyg"/>
-                            <constraint firstItem="YW8-3L-S83" firstAttribute="trailing" secondItem="Aze-VO-52p" secondAttribute="trailing" id="wTk-Vr-9sS"/>
-                            <constraint firstItem="YW8-3L-S83" firstAttribute="leading" secondItem="Aze-VO-52p" secondAttribute="leading" id="yBE-cV-IT8"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -202,11 +115,6 @@
                     <connections>
                         <outlet property="desc" destination="Nar-Da-tlE" id="JyI-fA-jXx"/>
                         <outlet property="icon" destination="3RH-q0-wa5" id="iuN-2B-RlK"/>
-                        <outlet property="기간" destination="v4Z-Ma-WD8" id="aUF-1a-COM"/>
-                        <outlet property="시작일" destination="OhD-LH-PhZ" id="Ry7-Uk-ize"/>
-                        <outlet property="종료일" destination="YW8-3L-S83" id="tQU-hJ-r6f"/>
-                        <outlet property="주기" destination="Aze-VO-52p" id="94o-IE-j7K"/>
-                        <outlet property="횟수" destination="SI5-eX-l42" id="ADh-lL-cnf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2b-fG-diy" userLabel="First Responder" sceneMemberID="firstResponder"/>

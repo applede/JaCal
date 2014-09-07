@@ -69,13 +69,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     return tasks.selectedTask()
   }
 
-  func addTask(icon: String, title: String, duration: Int, freq: Int, count: Int) {
+  func addTask(icon: String, title: String) {
     let task = NSEntityDescription.insertNewObjectForEntityForName("Task", inManagedObjectContext: 관리된_객체_맥락) as Task
     task.title = title
     task.icon = icon
-    task.duration = Int16(duration)
-    task.freq = Int16(freq)
-    task.count = Int32(count)
     task.dones = NSSet()
     saveContext()
     tasks.addTask(task)

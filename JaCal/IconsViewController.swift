@@ -64,8 +64,6 @@ class IconsViewController: UICollectionViewController {
     TaskTempl("🍲", "요리하기"),
     TaskTempl("⛺️", "캠핑가기"),
   ]
-  var parent: TaskFormController!
-  var 덮개: UIView!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -103,7 +101,6 @@ class IconsViewController: UICollectionViewController {
 
 
   override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    //#warning Incomplete method implementation -- Return the number of items in the section
     return templates.count
   }
 
@@ -125,12 +122,8 @@ class IconsViewController: UICollectionViewController {
     }
     */
 
-  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    let index = indexPath.row
-    parent.icon.setTitle(templates[index].icon, forState: .Normal)
-    parent.desc.placeholder = templates[index].title
-    self.dismissViewControllerAnimated(true, completion: nil)
-  }
+//  override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+//  }
 
     /*
     // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
@@ -147,4 +140,19 @@ class IconsViewController: UICollectionViewController {
     }
     */
 
+  func 아이콘() -> String {
+    let 선택 = collectionView!.indexPathsForSelectedItems() as [NSIndexPath]
+    if 선택.count > 0 {
+      return templates[선택[0].row].icon
+    }
+    return "❌"
+  }
+
+  func 설명() -> String {
+    let 선택 = collectionView!.indexPathsForSelectedItems() as [NSIndexPath]
+    if 선택.count > 0 {
+      return templates[선택[0].row].title
+    }
+    return "뭔가함"
+  }
 }

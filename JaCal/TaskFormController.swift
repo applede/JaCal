@@ -22,11 +22,6 @@ struct TaskTempl {
 class TaskFormController: UIViewController {
   @IBOutlet weak var icon: UIButton!
   @IBOutlet weak var desc: UITextField!
-  @IBOutlet weak var 시작일: UIButton!
-  @IBOutlet weak var 종료일: UIButton!
-  @IBOutlet weak var 기간: UIButton!
-  @IBOutlet weak var 주기: UIButton!
-  @IBOutlet weak var 횟수: UIButton!
 
   var durations: [String] = [
     "오늘부터", "일주 동안", "이주 동안", "삼주 동안", "한달 동안", "두달 동안", "세달 동안", "반년 동안", "일년 동안"
@@ -52,14 +47,10 @@ class TaskFormController: UIViewController {
   // MARK: - Navigation
   
   // In a storyboard-based application, you will often want to do a little preparation before navigation
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
-    if segue.identifier == "아이콘" {
-      (segue.destinationViewController as IconsViewController).parent = self
-    }
-//    println(segue)
-  }
+//  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+//    // Get the new view controller using segue.destinationViewController.
+//    // Pass the selected object to the new view controller.
+//  }
 
   func collectionView(collectionView: UICollectionView!, didSelectItemAtIndexPath indexPath: NSIndexPath!) {
   }
@@ -101,18 +92,14 @@ class TaskFormController: UIViewController {
     if title == "" {
       title = desc.placeholder
     }
-    let ㄱ = 기간.currentTitle?.toInt()
-    let ㅈ = 주기.currentTitle?.toInt()
-    let ㅎ = 횟수.currentTitle?.toInt()
-    app.addTask(icon.currentTitle!, title: title, duration: ㄱ!, freq: ㅈ!, count: ㅎ!)
+    app.addTask(icon.currentTitle!, title: title)
   }
 
   @IBAction func 목표_설정으로(세그: UIStoryboardSegue) {
     if let 아이콘스 = 세그.sourceViewController as? IconsViewController {
-      println(아이콘스)
-      반팝업_없애()
-      아이콘스.view.removeFromSuperview()
-      아이콘스.dismissViewControllerAnimated(true, completion: nil)
+      icon.setTitle(아이콘스.아이콘(), forState: .Normal)
+      desc.placeholder = 아이콘스.설명()
+      반팝업_없애(아이콘스)
     }
   }
 }
