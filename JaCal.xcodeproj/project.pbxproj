@@ -14,6 +14,8 @@
 		1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29C19ADA44B003EF680 /* Images.xcassets */; };
 		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
 		187E1C5619B8980400B657DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E1C5519B8980400B657DD /* Extensions.swift */; };
+		1881123E19B9E14E00ED020C /* HalfSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881123D19B9E14E00ED020C /* HalfSegue.swift */; };
+		1881124119B9FA2900ED020C /* IconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881124019B9FA2900ED020C /* IconsViewController.swift */; };
 		189D74CD19AF1E0000B59278 /* IconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CC19AF1E0000B59278 /* IconCell.swift */; };
 		189D74CF19AF25D700B59278 /* FreqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CE19AF25D700B59278 /* FreqController.swift */; };
 		189D74D319B07C5500B59278 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74D219B07C5400B59278 /* TaskCell.swift */; };
@@ -48,6 +50,9 @@
 		1827A2A719ADA44B003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
 		187E1C5519B8980400B657DD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		1881123D19B9E14E00ED020C /* HalfSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSegue.swift; sourceTree = "<group>"; };
+		1881123F19B9E4F100ED020C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
+		1881124019B9FA2900ED020C /* IconsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconsViewController.swift; sourceTree = "<group>"; };
 		189D74CC19AF1E0000B59278 /* IconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconCell.swift; sourceTree = "<group>"; };
 		189D74CE19AF25D700B59278 /* FreqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreqController.swift; sourceTree = "<group>"; };
 		189D74D219B07C5400B59278 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
@@ -81,6 +86,7 @@
 		1827A28419ADA44A003EF680 = {
 			isa = PBXGroup;
 			children = (
+				1881123F19B9E4F100ED020C /* MyPlayground.playground */,
 				1827A28F19ADA44A003EF680 /* JaCal */,
 				1827A2A519ADA44B003EF680 /* JaCalTests */,
 				1827A28E19ADA44A003EF680 /* Products */,
@@ -145,6 +151,8 @@
 				18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */,
 				18D27D6719AF1754009E0AA0 /* TaskFormController.swift */,
 				189D74CE19AF25D700B59278 /* FreqController.swift */,
+				1881123D19B9E14E00ED020C /* HalfSegue.swift */,
+				1881124019B9FA2900ED020C /* IconsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -269,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */,
+				1881123E19B9E14E00ED020C /* HalfSegue.swift in Sources */,
 				189D74CD19AF1E0000B59278 /* IconCell.swift in Sources */,
 				18D27D6819AF1754009E0AA0 /* TaskFormController.swift in Sources */,
 				189D74CF19AF25D700B59278 /* FreqController.swift in Sources */,
@@ -282,6 +291,7 @@
 				18D27D6319AEC14C009E0AA0 /* Task.swift in Sources */,
 				1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */,
 				187E1C5619B8980400B657DD /* Extensions.swift in Sources */,
+				1881124119B9FA2900ED020C /* IconsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

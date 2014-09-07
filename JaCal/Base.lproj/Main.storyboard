@@ -54,125 +54,9 @@
             <point key="canvasLocation" x="1234" y="462"/>
         </scene>
         <!--목표 설정-->
-        <scene sceneID="YpF-eV-mU8">
-            <objects>
-                <viewController title="목표 설정" id="bEQ-Ui-W46" customClass="TaskFormController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="qj0-KC-fLb"/>
-                        <viewControllerLayoutGuide type="bottom" id="zJn-Ia-tiw"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="EZT-bc-d7c">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="🏃" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cPx-CC-aaQ">
-                                <rect key="frame" x="16" y="14" width="32" height="39"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="=" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C3e-hj-jop">
-                                <rect key="frame" x="52" y="24" width="11" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="할 일의 설명" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gMl-xz-ZzB">
-                                <rect key="frame" x="70" y="20" width="514" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="508-jY-sBB">
-                                <rect key="frame" x="16" y="58" width="568" height="110"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="110" id="7SS-Z6-xpP"/>
-                                </constraints>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="eZp-MG-U7t">
-                                    <size key="itemSize" width="36" height="36"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="icon" id="4SS-Gr-XuH" customClass="IconCell" customModule="JaCal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5HW-AO-VvF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="5HW-AO-VvF" secondAttribute="trailing" id="8W8-3E-gmD"/>
-                                            <constraint firstItem="5HW-AO-VvF" firstAttribute="top" secondItem="4SS-Gr-XuH" secondAttribute="top" id="hNb-Rw-6ll"/>
-                                            <constraint firstAttribute="bottom" secondItem="5HW-AO-VvF" secondAttribute="bottom" id="t0s-S5-fnP"/>
-                                            <constraint firstItem="5HW-AO-VvF" firstAttribute="leading" secondItem="4SS-Gr-XuH" secondAttribute="leading" id="t8e-LL-a58"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="label" destination="5HW-AO-VvF" id="UpM-CL-i6e"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="bEQ-Ui-W46" id="fe2-74-SGr"/>
-                                    <outlet property="delegate" destination="bEQ-Ui-W46" id="0Sh-6v-OTY"/>
-                                </connections>
-                            </collectionView>
-                            <pickerView contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WQy-Ie-ngt">
-                                <rect key="frame" x="0.0" y="176" width="600" height="162"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="162" id="sU1-5J-Cdn"/>
-                                </constraints>
-                                <connections>
-                                    <outlet property="dataSource" destination="bEQ-Ui-W46" id="gqd-aN-e49"/>
-                                    <outlet property="delegate" destination="bEQ-Ui-W46" id="hZF-Un-wUf"/>
-                                </connections>
-                            </pickerView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="cPx-CC-aaQ" firstAttribute="leading" secondItem="EZT-bc-d7c" secondAttribute="leading" constant="16" id="0u7-T9-cci"/>
-                            <constraint firstItem="C3e-hj-jop" firstAttribute="leading" secondItem="cPx-CC-aaQ" secondAttribute="trailing" constant="4" id="5N7-qd-7BF"/>
-                            <constraint firstItem="WQy-Ie-ngt" firstAttribute="leading" secondItem="EZT-bc-d7c" secondAttribute="leading" id="7Xj-UA-gDG"/>
-                            <constraint firstItem="gMl-xz-ZzB" firstAttribute="top" secondItem="qj0-KC-fLb" secondAttribute="bottom" constant="20" id="9ia-Gi-soZ"/>
-                            <constraint firstItem="C3e-hj-jop" firstAttribute="centerY" secondItem="cPx-CC-aaQ" secondAttribute="centerY" constant="1" id="EQX-yL-9tS"/>
-                            <constraint firstItem="WQy-Ie-ngt" firstAttribute="top" secondItem="508-jY-sBB" secondAttribute="bottom" constant="8" symbolic="YES" id="LnP-Du-tTS"/>
-                            <constraint firstAttribute="trailing" secondItem="508-jY-sBB" secondAttribute="trailing" constant="16.5" id="SrM-ml-17D"/>
-                            <constraint firstAttribute="trailing" secondItem="WQy-Ie-ngt" secondAttribute="trailing" id="bEN-fj-I7v"/>
-                            <constraint firstItem="508-jY-sBB" firstAttribute="top" secondItem="gMl-xz-ZzB" secondAttribute="bottom" constant="8" id="dzG-hA-S6t"/>
-                            <constraint firstItem="508-jY-sBB" firstAttribute="leading" secondItem="EZT-bc-d7c" secondAttribute="leading" constant="16" id="iEv-d9-Jf0"/>
-                            <constraint firstItem="gMl-xz-ZzB" firstAttribute="leading" secondItem="C3e-hj-jop" secondAttribute="trailing" constant="8" id="nxo-0s-hEY"/>
-                            <constraint firstAttribute="trailing" secondItem="gMl-xz-ZzB" secondAttribute="trailing" constant="16" id="qsJ-UV-4XE"/>
-                            <constraint firstItem="gMl-xz-ZzB" firstAttribute="centerY" secondItem="C3e-hj-jop" secondAttribute="centerY" constant="1" id="s2n-g5-6uT"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="600"/>
-                    <connections>
-                        <outlet property="desc" destination="gMl-xz-ZzB" id="p9L-DP-KwH"/>
-                        <outlet property="icon" destination="cPx-CC-aaQ" id="NPo-Xd-cnd"/>
-                        <outlet property="picker" destination="WQy-Ie-ngt" id="9Pc-10-iuY"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KXz-uS-Kyi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1896" y="984.5"/>
-        </scene>
-        <!--목표 설정-->
         <scene sceneID="sCb-fE-TdJ">
             <objects>
-                <viewController title="목표 설정" automaticallyAdjustsScrollViewInsets="NO" id="PAl-AN-SY7" sceneMemberID="viewController">
+                <viewController title="목표 설정" automaticallyAdjustsScrollViewInsets="NO" id="PAl-AN-SY7" customClass="TaskFormController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="sSq-pd-Ajp"/>
                         <viewControllerLayoutGuide type="bottom" id="uxl-6b-UfL"/>
@@ -202,6 +86,9 @@
                                         <exclude reference="wPa-tW-Gju"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <segue destination="w9s-g9-7nB" kind="custom" identifier="아이콘" customClass="HalfSegue" id="5xF-Na-iVQ"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="설명" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G6A-qc-M9m">
                                 <rect key="frame" x="16" y="49" width="29.5" height="20.5"/>
@@ -209,7 +96,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Da-tlE">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="예: 달리기" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nar-Da-tlE">
                                 <rect key="frame" x="68" y="46" width="515.5" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -312,10 +199,74 @@
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="400"/>
+                    <connections>
+                        <outlet property="desc" destination="Nar-Da-tlE" id="JyI-fA-jXx"/>
+                        <outlet property="icon" destination="3RH-q0-wa5" id="iuN-2B-RlK"/>
+                        <outlet property="기간" destination="v4Z-Ma-WD8" id="aUF-1a-COM"/>
+                        <outlet property="시작일" destination="OhD-LH-PhZ" id="Ry7-Uk-ize"/>
+                        <outlet property="종료일" destination="YW8-3L-S83" id="tQU-hJ-r6f"/>
+                        <outlet property="주기" destination="Aze-VO-52p" id="94o-IE-j7K"/>
+                        <outlet property="횟수" destination="SI5-eX-l42" id="ADh-lL-cnf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m2b-fG-diy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1896" y="1630"/>
+            <point key="canvasLocation" x="1944" y="1006"/>
+        </scene>
+        <!--Icons View Controller-->
+        <scene sceneID="zEu-Y2-vZy">
+            <objects>
+                <collectionViewController id="w9s-g9-7nB" customClass="IconsViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="ARv-eI-Nxk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="1" minimumInteritemSpacing="1" id="S45-Cy-D1P">
+                            <size key="itemSize" width="40" height="40"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="17" minY="0.0" maxX="17" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="아이콘" id="Aq5-XL-vIk" customClass="IconCell" customModule="JaCal" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="🚲" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ika-eD-XdU">
+                                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="32"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ika-eD-XdU" firstAttribute="leading" secondItem="Aq5-XL-vIk" secondAttribute="leading" id="6r4-P5-FdM"/>
+                                    <constraint firstItem="ika-eD-XdU" firstAttribute="top" secondItem="Aq5-XL-vIk" secondAttribute="top" id="G1h-Mr-68f"/>
+                                    <constraint firstAttribute="trailing" secondItem="ika-eD-XdU" secondAttribute="trailing" id="MPv-BQ-CoT"/>
+                                    <constraint firstAttribute="bottom" secondItem="ika-eD-XdU" secondAttribute="bottom" id="hhw-BO-mat"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="label" destination="ika-eD-XdU" id="ykS-SF-hSw"/>
+                                    <segue destination="Wok-0a-EXL" kind="unwind" unwindAction="목표_설정으로:" id="X0o-69-Unc"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <connections>
+                            <outlet property="dataSource" destination="w9s-g9-7nB" id="Oii-HO-Bio"/>
+                            <outlet property="delegate" destination="w9s-g9-7nB" id="GfQ-xm-3r5"/>
+                        </connections>
+                    </collectionView>
+                </collectionViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YiO-n0-OKt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Wok-0a-EXL" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="2609" y="1006"/>
         </scene>
         <!--Tasks View Controller-->
         <scene sceneID="SYj-gm-2VW">
