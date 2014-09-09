@@ -11,6 +11,8 @@ import UIKit
 //let reuseIdentifier = "Cell"
 let 달력 = NSCalendar.currentCalendar()
 let 날_플래그 = NSCalendarUnit.CalendarUnitEra | NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
+let 일요일_글자색 = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
+let 토요일_글자색 = UIColor(red: 0.0, green: 0.0, blue: 0.7, alpha: 1.0)
 
 class CalendarViewController: UICollectionViewController {
 //  var 한일들: [TaskDone] = []
@@ -73,9 +75,14 @@ class CalendarViewController: UICollectionViewController {
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("weekday", forIndexPath:indexPath) as WeekdayCell
       let formatter = NSDateFormatter()
       cell.label.text = formatter.shortWeekdaySymbols[index] as? String
+      if index == 0 {
+        cell.label.textColor = 일요일_글자색
+      } else if index == 6 {
+        cell.label.textColor = 토요일_글자색
+      }
       return cell
     } else {
-      let (날, 월, 일) = 인덱스에서(index - 7)
+      let (날, 월, 일, 요일) = 인덱스에서(index - 7)
       let cell = collectionView.dequeueReusableCellWithReuseIdentifier("day", forIndexPath:indexPath) as DayCell
       if 월 != 보여주는_달 {
         cell.label.textColor = UIColor.grayColor()
@@ -87,6 +94,11 @@ class CalendarViewController: UICollectionViewController {
         cell.label.textColor = UIColor.darkTextColor()
         cell.backgroundColor = UIColor.whiteColor()
       }
+      if 요일 == 1 {
+        cell.label.textColor = 일요일_글자색
+      } else if 요일 == 7 {
+        cell.label.textColor = 토요일_글자색
+      }
       cell.label.text = String(일)
       cell.icon.text = 아이콘들(에서: 에_한일들[날])
       cell.날 = 날
@@ -94,10 +106,10 @@ class CalendarViewController: UICollectionViewController {
     }
   }
 
-  func 인덱스에서(인덱스: Int) -> (NSTimeInterval, Int, Int) {
+  func 인덱스에서(인덱스: Int) -> (NSTimeInterval, Int, Int, Int) {
     let 날 = 첫칸_날 + Double(인덱스) * 60 * 60 * 24
-    let 분해 = 달력.components(.CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate(timeIntervalSinceReferenceDate: 날))
-    return (날, 분해.month, 분해.day)
+    let 분해 = 달력.components(.CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitWeekday, fromDate: NSDate(timeIntervalSinceReferenceDate: 날))
+    return (날, 분해.month, 분해.day, 분해.weekday)
   }
 
   func 첫칸_날_계산(달_첫날: NSDate) -> NSTimeInterval {
