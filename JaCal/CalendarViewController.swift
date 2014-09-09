@@ -89,6 +89,7 @@ class CalendarViewController: UICollectionViewController {
       }
       cell.label.text = String(일)
       cell.icon.text = 아이콘들(에서: 에_한일들[날])
+      cell.날 = 날
       return cell
     }
   }
@@ -131,17 +132,15 @@ class CalendarViewController: UICollectionViewController {
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
     if let 선택된_목표 = app.selectedTask() {
-      if cell.label.text != "" {
-        let 날짜 = 문자열에서(cell.label.text!)
-        if let 기록 = 찾은(중에: &에_한일들[날짜], 를: 선택된_목표) {
-          app.삭제(을: 기록)
-        } else {
-          let 기록 = app.한걸로(를: 선택된_목표, 에: 날짜)
-          추가(에: 날짜, 을: 기록)
-        }
-        cell.icon.text = 아이콘들(에서: 에_한일들[날짜])
-        app.tasks.달성율_계산()
+      let 날 = cell.날
+      if let 기록 = 찾은(중에: &에_한일들[날], 를: 선택된_목표) {
+        app.삭제(을: 기록)
+      } else {
+        let 기록 = app.한걸로(를: 선택된_목표, 에: 날)
+        추가(에: 날, 을: 기록)
       }
+      cell.icon.text = 아이콘들(에서: 에_한일들[날])
+      app.tasks.달성율_계산()
     }
   }
 
@@ -211,13 +210,6 @@ class CalendarViewController: UICollectionViewController {
 
   func multipleOf(x: Int, _ y: Int) -> Int {
     return (x + y - 1) / y * y
-  }
-
-  func 문자열에서(문자열: String) -> NSTimeInterval {
-    let 오늘 = NSDate()
-    let 구성요소 = 달력.components(날_플래그, fromDate: 오늘)
-    구성요소.day = 문자열.toInt()!
-    return 달력.dateFromComponents(구성요소)!.timeIntervalSinceReferenceDate
   }
 
   func 전_달_보여줘() {

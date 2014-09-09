@@ -11,5 +11,5 @@ import UIKit
 class DayCell: UICollectionViewCell {
   @IBOutlet weak var label: UILabel!
   @IBOutlet weak var icon: UILabel!
-    
+  var 날: NSTimeInterval = 0
 }
