@@ -35,7 +35,6 @@ class CalendarViewController: UICollectionViewController {
     let 기록들 = app.기록들()
     for 기록 in 기록들 {
       추가(에: 기록.date, 을: 기록)
-      println("\(기록.task?.title) \(기록.date)")
     }
     오늘 = 오늘_계산()
     달_첫날 = 오늘에서_달의_첫날()
@@ -152,7 +151,7 @@ class CalendarViewController: UICollectionViewController {
         추가(에: 날, 을: 기록)
       }
       cell.icon.text = 아이콘들(에서: 에_한일들[날])
-      app.tasks.달성율_계산()
+      app.tasks.달성률_계산()
     }
   }
 

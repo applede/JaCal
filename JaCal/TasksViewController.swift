@@ -52,7 +52,7 @@ class TasksViewController: UITableViewController {
       cell.selectedBackgroundView.backgroundColor = tableView.tintColor
       cell.icon.text = tasks[index].icon
       cell.title.text = tasks[index].title
-      cell.progress.text = 달성율(의: tasks[index])
+      cell.progress.text = 달성률(tasks[index])
       return cell
     }
   }
@@ -102,23 +102,54 @@ class TasksViewController: UITableViewController {
     return nil
   }
 
-  func 달성율_계산() {
+  func 달성률_계산() {
     let 테이블 = view as UITableView
     if let 인덱스 = 테이블.indexPathForSelectedRow() {
       let 셀 = 테이블.cellForRowAtIndexPath(인덱스) as TaskCell
       let 목표 = tasks[인덱스.row]
-      println("duration \(목표.duration) freq \(목표.freq) count \(목표.count)")
-      셀.progress.text = 달성율(의: 목표)
+      셀.progress.text = 달성률(목표)
     }
   }
 
-  func 달성율(의 목표: Task) -> String {
-    var 달성율: Float = 0
-    if 목표.duration == 0 {
-      if 목표.freq == 0 {
-        달성율 = Float(목표.dones.count) / Float(목표.count)
+  func 달성률(목표: Task) -> String {
+    var 주 = 0
+    var 월 = 0
+    var 년 = 0
+    let 오늘 = NSDate()
+    let 주의_첫날 = 주의_첫날_계산(오늘)
+    let 월의_첫날 = 월의_첫날_계산(오늘)
+    let 년의_첫날 = 년의_첫날_계산(오늘)
+    for 한적 in 목표.dones {
+      let 기록 = 한적 as TaskDone
+      if 기록.date >= 주의_첫날 {
+        주++
+      }
+      if 기록.date >= 월의_첫날 {
+        월++
+      }
+      if 기록.date >= 년의_첫날 {
+        년++
       }
     }
-    return String(format: "%.0f%%", 달성율 * 100)
+    return String(format: "%d/%d/%d", 주, 월, 년)
+  }
+
+  func 주의_첫날_계산(날: NSDate) -> NSTimeInterval {
+    let 분해 = 달력.components(날_플래그 | .CalendarUnitWeekday, fromDate: 날)
+    let 시간_없앤_날 = 달력.dateFromComponents(분해)!
+    return 시간_없앤_날.dateByAddingTimeInterval(-60 * 60 * 24 * Double(분해.weekday - 1))!.timeIntervalSinceReferenceDate
+  }
+
+  func 월의_첫날_계산(날: NSDate) -> NSTimeInterval {
+    let 분해 = 달력.components(날_플래그, fromDate: 날)
+    분해.day = 1
+    return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
+  }
+
+  func 년의_첫날_계산(날: NSDate) -> NSTimeInterval {
+    let 분해 = 달력.components(날_플래그, fromDate: 날)
+    분해.day = 1
+    분해.month = 1
+    return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
   }
 }
