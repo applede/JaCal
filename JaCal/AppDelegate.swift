@@ -56,15 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   var tasks: TasksViewController!
 
-  lazy var currentMonth: String = {
-    let today = NSDate()
-    let calendar = NSCalendar.currentCalendar()
-    let comps = calendar.components(.CalendarUnitMonth, fromDate: today)
-    let formatter = NSDateFormatter()
-    let str = formatter.monthSymbols[comps.month - 1] as String
-    return str
-  }()
-  
   func selectedTask() -> Task? {
     return tasks.selectedTask()
   }

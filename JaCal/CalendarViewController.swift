@@ -9,12 +9,16 @@
 import UIKit
 
 //let reuseIdentifier = "Cell"
+let 달력 = NSCalendar.currentCalendar()
+let 날_플래그 = NSCalendarUnit.CalendarUnitEra | NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
 
 class CalendarViewController: UICollectionViewController {
 //  var 한일들: [TaskDone] = []
   var 에_한일들: [NSTimeInterval: [TaskDone]] = [:]
   var 첫칸_날: NSTimeInterval = 0
   var 이번_달: Int = 0
+  var 오늘: NSTimeInterval = 0
+  var 달_첫날: NSDate = NSDate()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,8 +37,10 @@ class CalendarViewController: UICollectionViewController {
     }
     첫칸_날 = 첫칸_날_계산()
     이번_달 = 이번_달_계산()
+    오늘 = 오늘_계산()
+    달_첫날 = 오늘에서_달의_첫날()
   }
-  
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
@@ -75,6 +81,8 @@ class CalendarViewController: UICollectionViewController {
       if 월 != 이번_달 {
         cell.label.textColor = UIColor.grayColor()
         cell.backgroundColor = UIColor(white: 0.97, alpha: 1.0)
+      } else if 날 == 오늘 {
+        cell.backgroundColor = UIColor(red: 0.8, green: 0.9, blue: 1.0, alpha: 1.0)
       }
       cell.label.text = String(일)
       cell.icon.text = 아이콘들(에서: 에_한일들[날])
@@ -84,28 +92,28 @@ class CalendarViewController: UICollectionViewController {
 
   func 인덱스에서(인덱스: Int) -> (NSTimeInterval, Int, Int) {
     let 날 = 첫칸_날 + Double(인덱스) * 60 * 60 * 24
-    let 분해 = NSCalendar.currentCalendar().components(.CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate(timeIntervalSinceReferenceDate: 날))
+    let 분해 = 달력.components(.CalendarUnitMonth | .CalendarUnitDay, fromDate: NSDate(timeIntervalSinceReferenceDate: 날))
     return (날, 분해.month, 분해.day)
   }
 
   func 첫칸_날_계산() -> NSTimeInterval {
-    let 칼렌다 = NSCalendar.currentCalendar()
-    var 날 = NSDate()
-    var 첫날_지남 = false
+    var 날 = 달_첫날
     while true {
-      let 분해 = 칼렌다.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitWeekday | .CalendarUnitDay, fromDate: 날)
-      if 분해.day == 1 {
-        첫날_지남 = true
-      }
-      if 분해.weekday == 1 && 첫날_지남 {
-        return 칼렌다.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
+      let 분해 = 달력.components(날_플래그 | .CalendarUnitWeekday, fromDate: 날)
+      if 분해.weekday == 1 {
+        return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
       }
       날 = 날.dateByAddingTimeInterval(-60 * 60 * 24)
     }
   }
 
   func 이번_달_계산() -> Int {
-    return NSCalendar.currentCalendar().components(.CalendarUnitMonth, fromDate: NSDate()).month
+    return 달력.components(.CalendarUnitMonth, fromDate: NSDate()).month
+  }
+
+  func 오늘_계산() -> NSTimeInterval {
+    let 분해 = 달력.components(날_플래그, fromDate: NSDate())
+    return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
   }
 
   // MARK: UICollectionViewDelegate
@@ -189,12 +197,11 @@ class CalendarViewController: UICollectionViewController {
   }
 
   lazy var paddingDays: Int = {
-    let calendar = NSCalendar.currentCalendar()
     let today = NSDate()
-    let comps = calendar.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: today)
+    let comps = 달력.components(날_플래그, fromDate: today)
     comps.day = 1
-    let firstDay = calendar.dateFromComponents(comps)
-    let firstComps = calendar.components(.CalendarUnitWeekday, fromDate: firstDay!)
+    let firstDay = 달력.dateFromComponents(comps)
+    let firstComps = 달력.components(.CalendarUnitWeekday, fromDate: firstDay!)
     return firstComps.weekday - 1
   }()
 
@@ -205,30 +212,44 @@ class CalendarViewController: UICollectionViewController {
     return days.length
   }()
 
-  func 앞에_달_날수() -> Int {
-    let 칼렌다 = NSCalendar.currentCalendar()
+  func multipleOf(x: Int, _ y: Int) -> Int {
+    return (x + y - 1) / y * y
+  }
+
+  func 문자열에서(문자열: String) -> NSTimeInterval {
     let 오늘 = NSDate()
-    let 분해 = 칼렌다.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay, fromDate: 오늘)
+    let 구성요소 = 달력.components(날_플래그, fromDate: 오늘)
+    구성요소.day = 문자열.toInt()!
+    return 달력.dateFromComponents(구성요소)!.timeIntervalSinceReferenceDate
+  }
+
+  func 전_달_보여줘() {
+    let 분해 = 달력.components(날_플래그, fromDate: 달_첫날)
     if 분해.month > 1 {
       분해.month--
     } else {
       분해.month = 12
       분해.year--
     }
-    분해.day = 1
-    let 전달_첫날 = 칼렌다.dateFromComponents(분해)!
-    return 칼렌다.rangeOfUnit(.CalendarUnitDay, inUnit: .CalendarUnitMonth, forDate: 전달_첫날).length
+    달_첫날 = 달력.dateFromComponents(분해)!
+    첫칸_날 = 첫칸_날_계산()
+    collectionView!.reloadData()
   }
 
-  func multipleOf(x: Int, _ y: Int) -> Int {
-    return (x + y - 1) / y * y
+  func 다음_달_보여줘() {
+    
   }
 
-  func 문자열에서(문자열: String) -> NSTimeInterval {
-    let 달력 = NSCalendar.currentCalendar()
+  func 보여주는_달_이름() -> String {
+    let comps = 달력.components(.CalendarUnitMonth, fromDate: 달_첫날)
+    let str = 달력.monthSymbols[comps.month - 1] as String
+    return str
+  }
+
+  func 오늘에서_달의_첫날() -> NSDate {
     let 오늘 = NSDate()
-    let 구성요소 = 달력.components(.CalendarUnitEra | .CalendarUnitYear | .CalendarUnitMonth | .CalendarUnitDay | .CalendarUnitTimeZone, fromDate: 오늘)
-    구성요소.day = 문자열.toInt()!
-    return 달력.dateFromComponents(구성요소)!.timeIntervalSinceReferenceDate
+    let 분해 = 달력.components(날_플래그, fromDate: 오늘)
+    분해.day = 1
+    return 달력.dateFromComponents(분해)!
   }
 }
