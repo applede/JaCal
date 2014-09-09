@@ -39,10 +39,12 @@ class ViewController: UIViewController {
 
   @IBAction func 전_달(sender: UIBarButtonItem) {
     calendar.전_달_보여줘()
+    title = calendar.보여주는_달_이름()
   }
 
   @IBAction func 다음_달(sender: UIBarButtonItem) {
     calendar.다음_달_보여줘()
+    title = calendar.보여주는_달_이름()
   }
 }
 
