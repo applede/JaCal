@@ -24,17 +24,23 @@ class ViewController: UIViewController {
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-    switch segue.identifier {
-//    case nil:
-//      return
-    case "calendar":
+    if segue.identifier == "calendar" {
       calendar = segue.destinationViewController as CalendarViewController
       title = calendar.보여주는_달_이름()
-    case "tasks":
+    } else if segue.identifier == "tasks" {
       tasks = segue.destinationViewController as TasksViewController
-    default:
-      return
     }
+//    switch segue.identifier {
+////    case nil:
+////      return
+//    case "calendar":
+//      calendar = segue.destinationViewController as CalendarViewController
+//      title = calendar.보여주는_달_이름()
+//    case "tasks":
+//      tasks = segue.destinationViewController as TasksViewController
+//    default:
+//      return
+//    }
   }
 
   @IBAction func 전_달(sender: UIBarButtonItem) {

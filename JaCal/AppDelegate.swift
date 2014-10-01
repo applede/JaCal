@@ -101,7 +101,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   lazy var 관리된_객체_맥락: NSManagedObjectContext = {
     let 모델 = NSManagedObjectModel.mergedModelFromBundles(NSBundle.allBundles())
-    let 지속저장코디 = NSPersistentStoreCoordinator(managedObjectModel: 모델)
+    let 지속저장코디 = NSPersistentStoreCoordinator(managedObjectModel: 모델!)
 
     let 유알엘 = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.URLByAppendingPathComponent("JaCal.sqlite")
 

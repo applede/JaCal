@@ -8,6 +8,8 @@
 
 import UIKit
 
+let 반투명_높이: CGFloat = 260
+
 @objc(HalfSegue) class HalfSegue: UIStoryboardSegue {
   override func perform() {
     let src = sourceViewController as UIViewController
@@ -15,7 +17,7 @@ import UIKit
     let 덮개 = UIView(frame: src.view.bounds)
 
     덮개.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.0)
-    dst.view.frame = CGRectMake(0, src.view.frame.height, dst.view.frame.size.width, dst.view.frame.size.height)
+    dst.view.frame = CGRectMake(0.0, src.view.frame.height, src.view.frame.size.width, src.view.frame.size.height - 반투명_높이)
 
     src.addChildViewController(dst)
     src.view.addSubview(덮개)
@@ -24,7 +26,7 @@ import UIKit
 
     UIView.animateWithDuration(0.5) {
       덮개.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.3)
-      dst.view.frame = CGRectMake(0, 260, dst.view.frame.size.width, dst.view.frame.size.height)
+      dst.view.frame = CGRectMake(0, 반투명_높이, dst.view.frame.size.width, dst.view.frame.size.height)
     }
   }
 }
