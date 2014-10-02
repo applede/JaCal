@@ -95,11 +95,23 @@ class TaskFormController: UIViewController {
     app.addTask(icon.currentTitle!, title: title)
   }
 
+  var 아이콘스: UIViewController?
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "아이콘" || segue.identifier == "아이콘2" {
+      아이콘스 = segue.destinationViewController as? UIViewController
+    }
+  }
+
   @IBAction func 목표_설정으로(세그: UIStoryboardSegue) {
     if let 아이콘스 = 세그.sourceViewController as? IconsViewController {
       icon.setTitle(아이콘스.아이콘(), forState: .Normal)
       desc.placeholder = 아이콘스.설명()
       반팝업_없애(아이콘스)
     }
+  }
+
+  func 반팝업_없애기() {
+    반팝업_없애(아이콘스!)
   }
 }

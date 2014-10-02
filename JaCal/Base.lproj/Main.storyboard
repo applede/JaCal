@@ -111,7 +111,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="w9s-g9-7nB" kind="custom" customClass="HalfSegue" id="eeb-nw-wOq"/>
+                                    <segue destination="w9s-g9-7nB" kind="custom" identifier="아이콘2" customClass="HalfSegue" id="qeK-7D-l4a"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -182,7 +182,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="label" destination="ika-eD-XdU" id="ykS-SF-hSw"/>
-                                    <segue destination="Wok-0a-EXL" kind="unwind" unwindAction="목표_설정으로:" id="X0o-69-Unc"/>
+                                    <segue destination="Wok-0a-EXL" kind="unwind" unwindAction="목표_설정으로:" id="Wdt-LI-ZuO"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -414,6 +414,6 @@
         <image name="Right" width="32" height="32"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="mKh-bo-baC"/>
+        <segue reference="qeK-7D-l4a"/>
     </inferredMetricsTieBreakers>
 </document>
