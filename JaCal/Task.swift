@@ -11,11 +11,12 @@ import CoreData
 
 class Task: NSManagedObject {
 
-    @NSManaged var count: Int32
-    @NSManaged var icon: String
-    @NSManaged var duration: Int16
-    @NSManaged var freq: Int16
-    @NSManaged var title: String
-    @NSManaged var dones: NSSet
+  @NSManaged var count: Int32
+  @NSManaged var icon: String
+  @NSManaged var duration: Int16
+  @NSManaged var freq: Int16
+  @NSManaged var order: Int16
+  @NSManaged var title: String
+  @NSManaged var dones: NSSet
 
 }

@@ -57,13 +57,13 @@ class TasksViewController: UITableViewController {
     }
   }
 
-  /*
-  // Override to support conditional editing of the table view.
-  override func tableView(tableView: UITableView!, canEditRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
-  // Return NO if you do not want the specified item to be editable.
-  return true
+  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    if indexPath.row < tasks.count {
+      return true
+    } else {
+      return false
+    }
   }
-  */
   
   // Override to support editing the table view.
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -75,12 +75,14 @@ class TasksViewController: UITableViewController {
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     } else if editingStyle == .Insert {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }    
+    }
   }
 
   // Override to support rearranging the table view.
   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-  
+    let t = tasks[fromIndexPath.row]
+    tasks.removeAtIndex(fromIndexPath.row)
+    tasks.insert(t, atIndex: toIndexPath.row)
   }
 
   // Override to support conditional rearranging of the table view.
@@ -90,6 +92,7 @@ class TasksViewController: UITableViewController {
   }
 
   func addTask(task: Task) {
+    task.order = Int16(tasks.count)
     tasks.append(task)
     (view as UITableView).reloadData()
   }
@@ -151,5 +154,25 @@ class TasksViewController: UITableViewController {
     분해.day = 1
     분해.month = 1
     return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
+  }
+
+  @IBAction func 편집모드(sender: UIButton) {
+    let 테이블 = view as UITableView
+    if 테이블.editing {
+      테이블.setEditing(false, animated: true)
+      sender.setTitle("수정", forState: .Normal)
+      순서저장()
+    } else {
+      테이블.setEditing(true, animated: true)
+      sender.setTitle("완료", forState: .Normal)
+    }
+  }
+
+  func 순서저장() {
+    var 순서 = 0
+    for t in tasks {
+      t.order = Int16(순서++)
+    }
+    app.saveContext()
   }
 }

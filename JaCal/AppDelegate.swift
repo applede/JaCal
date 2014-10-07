@@ -65,8 +65,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     task.title = title
     task.icon = icon
     task.dones = NSSet()
-    saveContext()
     tasks.addTask(task)
+    saveContext()
   }
 
   func 한걸로(를 목표: Task, 에 날짜: NSTimeInterval) -> TaskDone {
@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func 목표들() -> [Task] {
     let 요구 = NSFetchRequest()
     요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: 관리된_객체_맥락)
+    요구.sortDescriptors = [ NSSortDescriptor(key: "order", ascending: true) ]
     var 에러: NSError?
     let 불러온거 = 관리된_객체_맥락.executeFetchRequest(요구, error: &에러)
     return 불러온거 as [Task]
@@ -105,7 +106,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     let 유알엘 = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).last?.URLByAppendingPathComponent("JaCal.sqlite")
 
-    let 옵션 = [NSPersistentStoreFileProtectionKey: NSFileProtectionComplete,  NSMigratePersistentStoresAutomaticallyOption: true]
+    let 옵션 = [
+      NSPersistentStoreFileProtectionKey: NSFileProtectionComplete,
+      NSMigratePersistentStoresAutomaticallyOption: true,
+      NSInferMappingModelAutomaticallyOption: true]
     var 에러: NSError? = nil
     var 저장소 = 지속저장코디.addPersistentStoreWithType(NSSQLiteStoreType, configuration:nil, URL:유알엘, options:옵션, error:&에러)
     if 저장소 == nil {

@@ -28,7 +28,7 @@
                                 </connections>
                             </containerView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q1f-uk-NqP">
-                                <rect key="frame" x="0.0" y="391" width="600" height="209"/>
+                                <rect key="frame" x="0.0" y="383" width="600" height="217"/>
                                 <connections>
                                     <segue destination="9QJ-H6-yWT" kind="embed" identifier="tasks" id="iFz-HS-D6V"/>
                                 </connections>
@@ -36,10 +36,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Q1f-uk-NqP" firstAttribute="top" secondItem="fV1-9U-L1l" secondAttribute="bottom" constant="8" id="549-QM-eav"/>
                             <constraint firstAttribute="trailing" secondItem="fV1-9U-L1l" secondAttribute="trailing" id="7Tz-KA-f33"/>
                             <constraint firstItem="Q1f-uk-NqP" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="H3Y-nf-1Cg"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="Q1f-uk-NqP" secondAttribute="bottom" id="R9D-kt-fbH"/>
+                            <constraint firstItem="Q1f-uk-NqP" firstAttribute="top" secondItem="fV1-9U-L1l" secondAttribute="bottom" id="oRg-2D-mEP"/>
                             <constraint firstItem="fV1-9U-L1l" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="rkU-53-oOB"/>
                             <constraint firstAttribute="trailing" secondItem="Q1f-uk-NqP" secondAttribute="trailing" id="wIQ-Ve-jfS"/>
                             <constraint firstItem="fV1-9U-L1l" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="z9D-bv-bas"/>
@@ -202,9 +202,30 @@
             <objects>
                 <tableViewController autoresizesArchivedViewToFullSize="NO" automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="currentContext" id="9QJ-H6-yWT" customClass="TasksViewController" customModule="JaCal" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="36" sectionHeaderHeight="1" sectionFooterHeight="1" id="vXR-CL-28u">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="209"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="217"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="vFz-mX-Nt2">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FYg-R0-6FV">
+                                    <rect key="frame" x="550" y="0.0" width="30" height="30"/>
+                                    <state key="normal" title="수정">
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="편집모드:" destination="9QJ-H6-yWT" eventType="touchUpInside" id="sEQ-14-Cto"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="FYg-R0-6FV" secondAttribute="bottom" id="07G-0O-Dou"/>
+                                <constraint firstItem="FYg-R0-6FV" firstAttribute="top" secondItem="vFz-mX-Nt2" secondAttribute="top" id="1en-Ch-Vh8"/>
+                                <constraint firstAttribute="trailing" secondItem="FYg-R0-6FV" secondAttribute="trailing" constant="20" symbolic="YES" id="wfa-FO-DNd"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" showsReorderControl="YES" indentationWidth="0.0" reuseIdentifier="task" id="Ya0-ie-Eun" customClass="TaskCell" customModule="JaCal" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>

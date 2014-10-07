@@ -39,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18181D2319E4265F00A4283E /* JaCal 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "JaCal 2.xcdatamodel"; sourceTree = "<group>"; };
 		1827A28D19ADA44A003EF680 /* JaCal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JaCal.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827A29119ADA44A003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1827A29219ADA44A003EF680 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -501,9 +502,10 @@
 		1827A29419ADA44A003EF680 /* JaCal.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				18181D2319E4265F00A4283E /* JaCal 2.xcdatamodel */,
 				1827A29519ADA44B003EF680 /* JaCal.xcdatamodel */,
 			);
-			currentVersion = 1827A29519ADA44B003EF680 /* JaCal.xcdatamodel */;
+			currentVersion = 18181D2319E4265F00A4283E /* JaCal 2.xcdatamodel */;
 			path = JaCal.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
