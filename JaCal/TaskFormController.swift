@@ -22,6 +22,8 @@ struct TaskTempl {
 class TaskFormController: UIViewController {
   @IBOutlet weak var icon: UIButton!
   @IBOutlet weak var desc: UITextField!
+  @IBOutlet weak var 화살표: UIButton!
+  var 아이콘스: UIViewController?
 
   var durations: [String] = [
     "오늘부터", "일주 동안", "이주 동안", "삼주 동안", "한달 동안", "두달 동안", "세달 동안", "반년 동안", "일년 동안"
@@ -95,11 +97,10 @@ class TaskFormController: UIViewController {
     app.addTask(icon.currentTitle!, title: title)
   }
 
-  var 아이콘스: UIViewController?
-
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "아이콘" || segue.identifier == "아이콘2" {
       아이콘스 = segue.destinationViewController as? UIViewController
+      화살표.setTitle("▽", forState: .Normal)
     }
   }
 
@@ -108,10 +109,12 @@ class TaskFormController: UIViewController {
       icon.setTitle(아이콘스.아이콘(), forState: .Normal)
       desc.placeholder = 아이콘스.설명()
       반팝업_없애(아이콘스)
+      화살표.setTitle("▷", forState: .Normal)
     }
   }
 
   func 반팝업_없애기() {
     반팝업_없애(아이콘스!)
+    화살표.setTitle("▷", forState: .Normal)
   }
 }
