@@ -78,7 +78,13 @@ class TasksViewController: UITableViewController {
     }
   }
 
-  // Override to support rearranging the table view.
+  override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+    if proposedDestinationIndexPath.row >= tasks.count {
+      return NSIndexPath(forRow: tasks.count - 1, inSection: proposedDestinationIndexPath.section)
+    }
+    return proposedDestinationIndexPath
+  }
+
   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
     let t = tasks[fromIndexPath.row]
     tasks.removeAtIndex(fromIndexPath.row)
