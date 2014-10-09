@@ -97,9 +97,33 @@ class TasksViewController: UITableViewController {
     return true
   }
 
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    if tableView.editing {
+      performSegueWithIdentifier("목표추가", sender: self)
+    }
+  }
+
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "목표추가" {
+      let controller = segue.destinationViewController as TaskFormController
+      let tableView = view as UITableView
+      if tableView.editing {
+        controller.title = "목표 수정"
+        controller.task = selectedTask()
+      } else {
+        controller.title = "목표 설정"
+        controller.task = nil
+      }
+    }
+  }
+
   func addTask(task: Task) {
     task.order = Int16(tasks.count)
     tasks.append(task)
+    refresh()
+  }
+
+  func refresh() {
     (view as UITableView).reloadData()
   }
 

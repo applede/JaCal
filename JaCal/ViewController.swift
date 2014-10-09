@@ -14,8 +14,6 @@ class ViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view, typically from a nib.
-//    self.title = app.currentMonth
   }
 
   override func didReceiveMemoryWarning() {
@@ -30,17 +28,6 @@ class ViewController: UIViewController {
     } else if segue.identifier == "tasks" {
       tasks = segue.destinationViewController as TasksViewController
     }
-//    switch segue.identifier {
-////    case nil:
-////      return
-//    case "calendar":
-//      calendar = segue.destinationViewController as CalendarViewController
-//      title = calendar.보여주는_달_이름()
-//    case "tasks":
-//      tasks = segue.destinationViewController as TasksViewController
-//    default:
-//      return
-//    }
   }
 
   @IBAction func 전_달(sender: UIBarButtonItem) {

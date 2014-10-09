@@ -12,6 +12,8 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
+  var tasks: TasksViewController!
+  var calendar: CalendarViewController!
 
   func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
     // Override point for customization after application launch.
@@ -54,8 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
 
-  var tasks: TasksViewController!
-
   func selectedTask() -> Task? {
     return tasks.selectedTask()
   }
@@ -66,6 +66,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     task.icon = icon
     task.dones = NSSet()
     tasks.addTask(task)
+    saveContext()
+  }
+
+  func modifyTask(task: Task, icon: String, title: String) {
+    task.title = title
+    task.icon = icon
+    tasks.refresh()
+    calendar.refresh()
     saveContext()
   }
 

@@ -24,6 +24,7 @@ class TaskFormController: UIViewController {
   @IBOutlet weak var desc: UITextField!
   @IBOutlet weak var 화살표: UIButton!
   var 아이콘스: UIViewController?
+  var task: Task?
 
   var durations: [String] = [
     "오늘부터", "일주 동안", "이주 동안", "삼주 동안", "한달 동안", "두달 동안", "세달 동안", "반년 동안", "일년 동안"
@@ -38,6 +39,10 @@ class TaskFormController: UIViewController {
     
     // Do any additional setup after loading the view.
     self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "done:")
+    if let t = task {
+      icon.setTitle(t.icon, forState: .Normal)
+      desc.text = t.title
+    }
   }
   
   override func didReceiveMemoryWarning() {
@@ -94,7 +99,11 @@ class TaskFormController: UIViewController {
     if title == "" {
       title = desc.placeholder
     }
-    app.addTask(icon.currentTitle!, title: title)
+    if let t = task {
+      app.modifyTask(t, icon: icon.currentTitle!, title: title)
+    } else {
+      app.addTask(icon.currentTitle!, title: title)
+    }
   }
 
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

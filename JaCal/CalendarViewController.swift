@@ -15,7 +15,6 @@ let 일요일_글자색 = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
 let 토요일_글자색 = UIColor(red: 0.0, green: 0.0, blue: 0.7, alpha: 1.0)
 
 class CalendarViewController: UICollectionViewController {
-//  var 한일들: [TaskDone] = []
   var 에_한일들: [NSTimeInterval: [TaskDone]] = [:]
   var 첫칸_날: NSTimeInterval = 0
   var 보여주는_달: Int = 0
@@ -27,11 +26,8 @@ class CalendarViewController: UICollectionViewController {
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
+    app.calendar = self
     
-    // Register cell classes
-//    self.collectionView.registerClass(UICollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
-
-    // Do any additional setup after loading the view.
     let 기록들 = app.기록들()
     for 기록 in 기록들 {
       추가(에: 기록.date, 을: 기록)
@@ -266,5 +262,9 @@ class CalendarViewController: UICollectionViewController {
     let 분해 = 달력.components(날_플래그, fromDate: 오늘)
     분해.day = 1
     return 달력.dateFromComponents(분해)!
+  }
+
+  func refresh() {
+    collectionView!.reloadData()
   }
 }
