@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController {
   var calendar: CalendarViewController!
   var tasks: TasksViewController!
+  @IBOutlet weak var viewMode: UIButton!
+  @IBOutlet weak var editMode: UIButton!
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -27,6 +29,8 @@ class ViewController: UIViewController {
       title = calendar.보여주는_달_이름()
     } else if segue.identifier == "tasks" {
       tasks = segue.destinationViewController as TasksViewController
+      tasks.viewMode = viewMode
+      tasks.editMode = editMode
     }
   }
 
@@ -38,5 +42,13 @@ class ViewController: UIViewController {
   @IBAction func 다음_달(sender: UIBarButtonItem) {
     calendar.다음_달_보여줘()
     title = calendar.보여주는_달_이름()
+  }
+
+  @IBAction func switchView(sender: UIButton) {
+    tasks.switchView(sender)
+  }
+
+  @IBAction func editTasks(sender: UIButton) {
+    tasks.edit(sender)
   }
 }

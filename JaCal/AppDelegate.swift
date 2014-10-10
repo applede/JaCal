@@ -12,7 +12,7 @@ import CoreData
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
-  var tasks: TasksViewController!
+  var tasksViewController: TasksViewController!
   var calendar: CalendarViewController!
 
   func application(application: UIApplication!, didFinishLaunchingWithOptions launchOptions: NSDictionary!) -> Bool {
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
 
   func selectedTask() -> Task? {
-    return tasks.selectedTask()
+    return tasksViewController.selectedTask()
   }
 
   func addTask(icon: String, title: String) {
@@ -65,14 +65,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     task.title = title
     task.icon = icon
     task.dones = NSSet()
-    tasks.addTask(task)
+    tasksViewController.addTask(task)
     saveContext()
   }
 
   func modifyTask(task: Task, icon: String, title: String) {
     task.title = title
     task.icon = icon
-    tasks.refresh()
+    tasksViewController.refresh()
     calendar.refresh()
     saveContext()
   }
@@ -91,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     saveContext()
   }
 
-  func 목표들() -> [Task] {
+  func tasks() -> [Task] {
     let 요구 = NSFetchRequest()
     요구.entity = NSEntityDescription.entityForName("Task", inManagedObjectContext: 관리된_객체_맥락)
     요구.sortDescriptors = [ NSSortDescriptor(key: "order", ascending: true) ]

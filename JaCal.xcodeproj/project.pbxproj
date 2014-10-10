@@ -13,6 +13,7 @@
 		1827A29B19ADA44B003EF680 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29919ADA44B003EF680 /* Main.storyboard */; };
 		1827A29D19ADA44B003EF680 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1827A29C19ADA44B003EF680 /* Images.xcassets */; };
 		1827A2A919ADA44B003EF680 /* JaCalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1827A2A819ADA44B003EF680 /* JaCalTests.swift */; };
+		187CF3A919E6B83200CC7BA4 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187CF3A819E6B83200CC7BA4 /* TasksViewController.swift */; };
 		187E1C5619B8980400B657DD /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E1C5519B8980400B657DD /* Extensions.swift */; };
 		1881123E19B9E14E00ED020C /* HalfSegue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881123D19B9E14E00ED020C /* HalfSegue.swift */; };
 		1881124119B9FA2900ED020C /* IconsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1881124019B9FA2900ED020C /* IconsViewController.swift */; };
@@ -20,9 +21,9 @@
 		189D74CF19AF25D700B59278 /* FreqController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74CE19AF25D700B59278 /* FreqController.swift */; };
 		189D74D319B07C5500B59278 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189D74D219B07C5400B59278 /* TaskCell.swift */; };
 		18A80EDD19ADCC86000B2529 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */; };
-		18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */; };
 		18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE219ADD0E4000B2529 /* DayCell.swift */; };
 		18A80EE619ADD7E5000B2529 /* WeekdayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */; };
+		18D19B6B19E829B700C1A35C /* TaskIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D19B6A19E829B700C1A35C /* TaskIconCell.swift */; };
 		18D27D6319AEC14C009E0AA0 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6219AEC14C009E0AA0 /* Task.swift */; };
 		18D27D6519AEC14D009E0AA0 /* TaskDone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6419AEC14D009E0AA0 /* TaskDone.swift */; };
 		18D27D6819AF1754009E0AA0 /* TaskFormController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D27D6719AF1754009E0AA0 /* TaskFormController.swift */; };
@@ -50,6 +51,7 @@
 		1827A2A219ADA44B003EF680 /* JaCalTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = JaCalTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1827A2A719ADA44B003EF680 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1827A2A819ADA44B003EF680 /* JaCalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JaCalTests.swift; sourceTree = "<group>"; };
+		187CF3A819E6B83200CC7BA4 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
 		187E1C5519B8980400B657DD /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		1881123D19B9E14E00ED020C /* HalfSegue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HalfSegue.swift; sourceTree = "<group>"; };
 		1881123F19B9E4F100ED020C /* MyPlayground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = MyPlayground.playground; sourceTree = "<group>"; };
@@ -58,9 +60,10 @@
 		189D74CE19AF25D700B59278 /* FreqController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FreqController.swift; sourceTree = "<group>"; };
 		189D74D219B07C5400B59278 /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 		18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
-		18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		18A80EDE19ADCCF6000B2529 /* OldTasksViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OldTasksViewController.swift; sourceTree = "<group>"; };
 		18A80EE219ADD0E4000B2529 /* DayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayCell.swift; sourceTree = "<group>"; };
 		18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeekdayCell.swift; sourceTree = "<group>"; };
+		18D19B6A19E829B700C1A35C /* TaskIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskIconCell.swift; sourceTree = "<group>"; };
 		18D27D6219AEC14C009E0AA0 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		18D27D6419AEC14D009E0AA0 /* TaskDone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDone.swift; sourceTree = "<group>"; };
 		18D27D6719AF1754009E0AA0 /* TaskFormController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskFormController.swift; sourceTree = "<group>"; };
@@ -149,11 +152,12 @@
 			children = (
 				1827A29719ADA44B003EF680 /* ViewController.swift */,
 				18A80EDC19ADCC86000B2529 /* CalendarViewController.swift */,
-				18A80EDE19ADCCF6000B2529 /* TasksViewController.swift */,
+				18A80EDE19ADCCF6000B2529 /* OldTasksViewController.swift */,
 				18D27D6719AF1754009E0AA0 /* TaskFormController.swift */,
 				189D74CE19AF25D700B59278 /* FreqController.swift */,
 				1881123D19B9E14E00ED020C /* HalfSegue.swift */,
 				1881124019B9FA2900ED020C /* IconsViewController.swift */,
+				187CF3A819E6B83200CC7BA4 /* TasksViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -165,6 +169,7 @@
 				18A80EE519ADD7E5000B2529 /* WeekdayCell.swift */,
 				189D74CC19AF1E0000B59278 /* IconCell.swift */,
 				189D74D219B07C5400B59278 /* TaskCell.swift */,
+				18D19B6A19E829B700C1A35C /* TaskIconCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -286,12 +291,13 @@
 				1827A29819ADA44B003EF680 /* ViewController.swift in Sources */,
 				18D27D6519AEC14D009E0AA0 /* TaskDone.swift in Sources */,
 				189D74D319B07C5500B59278 /* TaskCell.swift in Sources */,
-				18A80EDF19ADCCF6000B2529 /* TasksViewController.swift in Sources */,
 				1827A29319ADA44A003EF680 /* AppDelegate.swift in Sources */,
 				18A80EE319ADD0E4000B2529 /* DayCell.swift in Sources */,
+				187CF3A919E6B83200CC7BA4 /* TasksViewController.swift in Sources */,
 				18D27D6319AEC14C009E0AA0 /* Task.swift in Sources */,
 				1827A29619ADA44B003EF680 /* JaCal.xcdatamodeld in Sources */,
 				187E1C5619B8980400B657DD /* Extensions.swift in Sources */,
+				18D19B6B19E829B700C1A35C /* TaskIconCell.swift in Sources */,
 				1881124119B9FA2900ED020C /* IconsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

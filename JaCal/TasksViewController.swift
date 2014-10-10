@@ -2,44 +2,112 @@
 //  TasksViewController.swift
 //  JaCal
 //
-//  Created by Jake Song on 8/27/14.
+//  Created by Jake Song on 10/9/14.
 //  Copyright (c) 2014 Jake Song. All rights reserved.
 //
 
 import UIKit
-import CoreData
 
-class TasksViewController: UITableViewController {
+class TasksViewController: UIViewController {
+  @IBOutlet weak var tableView: UITableView!
+  @IBOutlet weak var collectionView: UICollectionView!
+  weak var viewMode: UIButton!
+  weak var editMode: UIButton!
+
+  var gridMode = false
   var tasks: [Task] = []
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    // Uncomment the following line to preserve selection between presentations
-    // self.clearsSelectionOnViewWillAppear = false
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-//     self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    app.tasks = self
-    tasks = app.목표들()
+
+    // Do any additional setup after loading the view.
+    collectionView.allowsSelection = true
+    app.tasksViewController = self
+    tasks = app.tasks()
   }
-  
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
-  // MARK: - Table view data source
-  
-//  override func numberOfSectionsInTableView(tableView: UITableView!) -> Int {
-//    return 1
-//  }
 
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TaskIconCell {
+      cell.backgroundColor = UIColor.blueColor()
+    }
+  }
+
+  func collectionView(collectionView: UICollectionView, didDeselectItemAtIndexPath indexPath: NSIndexPath) {
+    if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TaskIconCell {
+      cell.backgroundColor = UIColor.clearColor()
+    }
+  }
+
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let cell = collectionView.dequeueReusableCellWithReuseIdentifier("icon", forIndexPath: indexPath) as TaskIconCell
+    let task = tasks[indexPath.row]
+    cell.icon.text = task.icon
+    return cell
+  }
+
+  override func viewWillAppear(animated: Bool) {
+    if let indexPath = tableView.indexPathForSelectedRow() {
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    }
+  }
+  
+  func refreshCount() {
+    if let index = tableView.indexPathForSelectedRow() {
+      let cell = tableView.cellForRowAtIndexPath(index) as TaskCell
+      cell.progress.text = dayWeekMonthCount(tasks[index.row])
+    }
+  }
+
+  func selectedTask() -> Task? {
+    if let index = tableView.indexPathForSelectedRow() {
+      return tasks[index.row]
+    }
+    return nil
+  }
+
+  func addTask(task: Task) {
+    task.order = Int16(tasks.count)
+    tasks.append(task)
+    refresh()
+  }
+
+  func refresh() {
+    if gridMode {
+      collectionView.reloadData()
+    } else {
+      tableView.reloadData()
+    }
+  }
+
+  func switchView(sender: UIButton) {
+    if tableView.editing {
+      edit(editMode)
+    }
+    if gridMode {
+      toListView()
+    } else {
+      gridMode = true
+      sender.setImage(UIImage(named: "List"), forState: .Normal)
+      view.bringSubviewToFront(collectionView)
+    }
+  }
+
+  func toListView() {
+    gridMode = false
+    viewMode.setImage(UIImage(named: "Grid"), forState: .Normal)
+    view.bringSubviewToFront(tableView)
+  }
+
+  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return tasks.count + 1
   }
   
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let index = indexPath.row
     if index == tasks.count {
       let cell = tableView.dequeueReusableCellWithIdentifier("taskAdd", forIndexPath: indexPath) as UITableViewCell
@@ -52,12 +120,12 @@ class TasksViewController: UITableViewController {
       cell.selectedBackgroundView.backgroundColor = tableView.tintColor
       cell.icon.text = tasks[index].icon
       cell.title.text = tasks[index].title
-      cell.progress.text = 달성률(tasks[index])
+      cell.progress.text = dayWeekMonthCount(tasks[index])
       return cell
     }
   }
 
-  override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     if indexPath.row < tasks.count {
       return true
     } else {
@@ -65,8 +133,7 @@ class TasksViewController: UITableViewController {
     }
   }
   
-  // Override to support editing the table view.
-  override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       // Delete the row from the data source
       app.관리된_객체_맥락.deleteObject(tasks[indexPath.row])
@@ -78,81 +145,39 @@ class TasksViewController: UITableViewController {
     }
   }
 
-  override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
+  func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
     if proposedDestinationIndexPath.row >= tasks.count {
       return NSIndexPath(forRow: tasks.count - 1, inSection: proposedDestinationIndexPath.section)
     }
     return proposedDestinationIndexPath
   }
 
-  override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+  func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
     let t = tasks[fromIndexPath.row]
     tasks.removeAtIndex(fromIndexPath.row)
     tasks.insert(t, atIndex: toIndexPath.row)
   }
 
-  // Override to support conditional rearranging of the table view.
-  override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+  func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
     // Return NO if you do not want the item to be re-orderable.
     return true
   }
 
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+  func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     if tableView.editing {
-      performSegueWithIdentifier("목표추가", sender: self)
+      performSegueWithIdentifier("addTask", sender: self)
     }
   }
 
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    if segue.identifier == "목표추가" {
-      let controller = segue.destinationViewController as TaskFormController
-      let tableView = view as UITableView
-      if tableView.editing {
-        controller.title = "목표 수정"
-        controller.task = selectedTask()
-      } else {
-        controller.title = "목표 설정"
-        controller.task = nil
-      }
-    }
-  }
-
-  func addTask(task: Task) {
-    task.order = Int16(tasks.count)
-    tasks.append(task)
-    refresh()
-  }
-
-  func refresh() {
-    (view as UITableView).reloadData()
-  }
-
-  func selectedTask() -> Task? {
-    let table = view as UITableView
-    if let index = table.indexPathForSelectedRow() {
-      return tasks[index.row]
-    }
-    return nil
-  }
-
-  func 달성률_계산() {
-    let 테이블 = view as UITableView
-    if let 인덱스 = 테이블.indexPathForSelectedRow() {
-      let 셀 = 테이블.cellForRowAtIndexPath(인덱스) as TaskCell
-      let 목표 = tasks[인덱스.row]
-      셀.progress.text = 달성률(목표)
-    }
-  }
-
-  func 달성률(목표: Task) -> String {
+  func dayWeekMonthCount(task: Task) -> String {
     var 주 = 0
     var 월 = 0
     var 년 = 0
     let 오늘 = NSDate()
-    let 주의_첫날 = 주의_첫날_계산(오늘)
-    let 월의_첫날 = 월의_첫날_계산(오늘)
-    let 년의_첫날 = 년의_첫날_계산(오늘)
-    for 한적 in 목표.dones {
+    let 주의_첫날 = firstDayOfWeek(오늘)
+    let 월의_첫날 = firstDayOfMonth(오늘)
+    let 년의_첫날 = firstDayOfYear(오늘)
+    for 한적 in task.dones {
       let 기록 = 한적 as TaskDone
       if 기록.date >= 주의_첫날 {
         주++
@@ -167,42 +192,61 @@ class TasksViewController: UITableViewController {
     return String(format: "%d/%d/%d", 주, 월, 년)
   }
 
-  func 주의_첫날_계산(날: NSDate) -> NSTimeInterval {
+  func firstDayOfWeek(날: NSDate) -> NSTimeInterval {
     let 분해 = 달력.components(날_플래그 | .CalendarUnitWeekday, fromDate: 날)
     let 시간_없앤_날 = 달력.dateFromComponents(분해)!
     return 시간_없앤_날.dateByAddingTimeInterval(-60 * 60 * 24 * Double(분해.weekday - 1))!.timeIntervalSinceReferenceDate
   }
 
-  func 월의_첫날_계산(날: NSDate) -> NSTimeInterval {
+  func firstDayOfMonth(날: NSDate) -> NSTimeInterval {
     let 분해 = 달력.components(날_플래그, fromDate: 날)
     분해.day = 1
     return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
   }
 
-  func 년의_첫날_계산(날: NSDate) -> NSTimeInterval {
+  func firstDayOfYear(날: NSDate) -> NSTimeInterval {
     let 분해 = 달력.components(날_플래그, fromDate: 날)
     분해.day = 1
     분해.month = 1
     return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
   }
 
-  @IBAction func 편집모드(sender: UIButton) {
-    let 테이블 = view as UITableView
-    if 테이블.editing {
-      테이블.setEditing(false, animated: true)
-      sender.setTitle("수정", forState: .Normal)
-      순서저장()
-    } else {
-      테이블.setEditing(true, animated: true)
-      sender.setTitle("완료", forState: .Normal)
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    if segue.identifier == "addTask" {
+      let controller = segue.destinationViewController as TaskFormController
+      if tableView.editing {
+        controller.title = "목표 수정"
+        controller.task = selectedTask()
+      } else {
+        controller.title = "목표 설정"
+        controller.task = nil
+      }
     }
   }
 
-  func 순서저장() {
-    var 순서 = 0
+  @IBAction func edit(sender: UIButton) {
+    if tableView.editing {
+      tableView.setEditing(false, animated: true)
+      sender.setTitle("수정", forState: .Normal)
+      saveOrder()
+    } else {
+      tableView.setEditing(true, animated: true)
+      sender.setTitle("완료", forState: .Normal)
+      if gridMode {
+        toListView()
+      }
+    }
+  }
+
+  func saveOrder() {
+    var order = 0
     for t in tasks {
-      t.order = Int16(순서++)
+      t.order = Int16(order++)
     }
     app.saveContext()
+  }
+
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return tasks.count
   }
 }
