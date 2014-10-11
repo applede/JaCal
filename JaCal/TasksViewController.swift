@@ -66,7 +66,9 @@ class TasksViewController: UIViewController {
 
   func selectedTask() -> Task? {
     if let index = currentSelection() {
-      return tasks[index.row]
+      if index.row < tasks.count {
+        return tasks[index.row]
+      }
     }
     return nil
   }
@@ -189,7 +191,7 @@ class TasksViewController: UIViewController {
   }
 
   func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    if tableView.editing {
+    if tableView.editing && indexPath.row < tasks.count {
       performSegueWithIdentifier("addTask", sender: self)
     }
   }
@@ -242,6 +244,7 @@ class TasksViewController: UIViewController {
       if tableView.editing {
         controller.title = "목표 수정"
         controller.task = selectedTask()
+        edit(editMode)
       } else {
         controller.title = "목표 설정"
         controller.task = nil
