@@ -235,6 +235,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-Jv-Qzq">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="fhl-hQ-Bs4">
+                                    <size key="itemSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="icon" id="Zea-Hw-alb" customClass="TaskIconCell" customModule="JaCal" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIv-tz-Mk1">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="lIv-tz-Mk1" firstAttribute="top" secondItem="Zea-Hw-alb" secondAttribute="top" id="LHc-ky-ZNw"/>
+                                            <constraint firstAttribute="bottom" secondItem="lIv-tz-Mk1" secondAttribute="bottom" id="TQd-T5-rze"/>
+                                            <constraint firstItem="lIv-tz-Mk1" firstAttribute="leading" secondItem="Zea-Hw-alb" secondAttribute="leading" id="o4W-0C-OFb"/>
+                                            <constraint firstAttribute="trailing" secondItem="lIv-tz-Mk1" secondAttribute="trailing" id="xov-dE-Tka"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="icon" destination="lIv-tz-Mk1" id="aNE-Ig-3ud"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="83v-Md-hKf" id="USz-Zp-cKG"/>
+                                    <outlet property="delegate" destination="83v-Md-hKf" id="Jxx-9R-ZXe"/>
+                                </connections>
+                            </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="36" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="yCe-lR-jGu">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -310,48 +352,6 @@
                                     <outlet property="delegate" destination="83v-Md-hKf" id="T5w-b4-1Ti"/>
                                 </connections>
                             </tableView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="BFc-Jv-Qzq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="171"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="fhl-hQ-Bs4">
-                                    <size key="itemSize" width="50" height="50"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="icon" id="Zea-Hw-alb" customClass="TaskIconCell" customModule="JaCal" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lIv-tz-Mk1">
-                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        </view>
-                                        <constraints>
-                                            <constraint firstItem="lIv-tz-Mk1" firstAttribute="top" secondItem="Zea-Hw-alb" secondAttribute="top" id="LHc-ky-ZNw"/>
-                                            <constraint firstAttribute="bottom" secondItem="lIv-tz-Mk1" secondAttribute="bottom" id="TQd-T5-rze"/>
-                                            <constraint firstItem="lIv-tz-Mk1" firstAttribute="leading" secondItem="Zea-Hw-alb" secondAttribute="leading" id="o4W-0C-OFb"/>
-                                            <constraint firstAttribute="trailing" secondItem="lIv-tz-Mk1" secondAttribute="trailing" id="xov-dE-Tka"/>
-                                        </constraints>
-                                        <connections>
-                                            <outlet property="icon" destination="lIv-tz-Mk1" id="aNE-Ig-3ud"/>
-                                        </connections>
-                                    </collectionViewCell>
-                                </cells>
-                                <connections>
-                                    <outlet property="dataSource" destination="83v-Md-hKf" id="USz-Zp-cKG"/>
-                                    <outlet property="delegate" destination="83v-Md-hKf" id="Jxx-9R-ZXe"/>
-                                </connections>
-                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>

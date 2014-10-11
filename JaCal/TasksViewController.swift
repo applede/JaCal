@@ -33,7 +33,7 @@ class TasksViewController: UIViewController {
 
   func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
     if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? TaskIconCell {
-      cell.backgroundColor = UIColor.blueColor()
+      cell.backgroundColor = UIColor(red: 0.1, green: 0.4, blue: 1.0, alpha: 1.0)
     }
   }
 
@@ -46,6 +46,7 @@ class TasksViewController: UIViewController {
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCellWithReuseIdentifier("icon", forIndexPath: indexPath) as TaskIconCell
     let task = tasks[indexPath.row]
+    cell.layer.cornerRadius = 5
     cell.icon.text = task.icon
     return cell
   }
@@ -64,7 +65,7 @@ class TasksViewController: UIViewController {
   }
 
   func selectedTask() -> Task? {
-    if let index = tableView.indexPathForSelectedRow() {
+    if let index = currentSelection() {
       return tasks[index.row]
     }
     return nil
@@ -77,30 +78,54 @@ class TasksViewController: UIViewController {
   }
 
   func refresh() {
-    if gridMode {
-      collectionView.reloadData()
-    } else {
-      tableView.reloadData()
-    }
+    collectionView.reloadData()
+    tableView.reloadData()
   }
 
   func switchView(sender: UIButton) {
     if tableView.editing {
       edit(editMode)
     }
+    let index = currentSelection()
     if gridMode {
-      toListView()
+      toListView(index)
     } else {
-      gridMode = true
-      sender.setImage(UIImage(named: "List"), forState: .Normal)
-      view.bringSubviewToFront(collectionView)
+      toGridView(index)
     }
   }
 
-  func toListView() {
+  func toListView(index: NSIndexPath?) {
     gridMode = false
     viewMode.setImage(UIImage(named: "Grid"), forState: .Normal)
     view.bringSubviewToFront(tableView)
+    if let i = index {
+      tableView.selectRowAtIndexPath(i, animated: false, scrollPosition: .Middle)
+    }
+  }
+
+  func toGridView(index: NSIndexPath?) {
+    gridMode = true
+    viewMode.setImage(UIImage(named: "List"), forState: .Normal)
+    view.bringSubviewToFront(collectionView)
+    if let oldIndex = currentSelection() {
+      collectionView(collectionView, didDeselectItemAtIndexPath: oldIndex)
+    }
+    collectionView.selectItemAtIndexPath(index, animated: false, scrollPosition: .CenteredVertically)
+    if let i = index {
+      collectionView(collectionView, didSelectItemAtIndexPath: i)
+    }
+  }
+
+  func currentSelection() -> NSIndexPath? {
+    if gridMode {
+      let indexes = collectionView.indexPathsForSelectedItems() as [NSIndexPath]
+      if indexes.count > 0 {
+        return indexes[0]
+      }
+    } else {
+      return tableView.indexPathForSelectedRow()
+    }
+    return nil
   }
 
   func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -229,11 +254,12 @@ class TasksViewController: UIViewController {
       tableView.setEditing(false, animated: true)
       sender.setTitle("수정", forState: .Normal)
       saveOrder()
+      collectionView.reloadData()
     } else {
       tableView.setEditing(true, animated: true)
       sender.setTitle("완료", forState: .Normal)
       if gridMode {
-        toListView()
+        toListView(nil)
       }
     }
   }
