@@ -11,8 +11,9 @@ import UIKit
 //let reuseIdentifier = "Cell"
 let 달력 = NSCalendar.currentCalendar()
 let 날_플래그 = NSCalendarUnit.CalendarUnitEra | NSCalendarUnit.CalendarUnitYear | NSCalendarUnit.CalendarUnitMonth | NSCalendarUnit.CalendarUnitDay
-let 일요일_글자색 = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
-let 토요일_글자색 = UIColor(red: 0.0, green: 0.0, blue: 0.7, alpha: 1.0)
+let sundayColor = UIColor(red: 0.7, green: 0.0, blue: 0.0, alpha: 1.0)
+let saturdayColor = UIColor(red: 0.0, green: 0.0, blue: 0.7, alpha: 1.0)
+let weekdayColor = UIColor.blackColor()
 
 class CalendarViewController: UICollectionViewController {
   var 에_한일들: [NSTimeInterval: [TaskDone]] = [:]
@@ -71,9 +72,11 @@ class CalendarViewController: UICollectionViewController {
       let formatter = NSDateFormatter()
       cell.label.text = formatter.shortWeekdaySymbols[index] as? String
       if index == 0 {
-        cell.label.textColor = 일요일_글자색
+        cell.label.textColor = sundayColor
       } else if index == 6 {
-        cell.label.textColor = 토요일_글자색
+        cell.label.textColor = saturdayColor
+      } else {
+        cell.label.textColor = weekdayColor
       }
       return cell
     } else {
@@ -90,9 +93,9 @@ class CalendarViewController: UICollectionViewController {
         cell.backgroundColor = UIColor.whiteColor()
       }
       if 요일 == 1 {
-        cell.label.textColor = 일요일_글자색
+        cell.label.textColor = sundayColor
       } else if 요일 == 7 {
-        cell.label.textColor = 토요일_글자색
+        cell.label.textColor = saturdayColor
       }
       cell.label.text = String(일)
       cell.icon.text = 아이콘들(에서: 에_한일들[날])
@@ -127,27 +130,19 @@ class CalendarViewController: UICollectionViewController {
     return 달력.dateFromComponents(분해)!.timeIntervalSinceReferenceDate
   }
 
-  // MARK: UICollectionViewDelegate
-  
-  /*
-  // Uncomment this method to specify if the specified item should be highlighted during tracking
-  func collectionView(collectionView: UICollectionView!, shouldHighlightItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
-  return true
-  }
-  */
-  
   override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-    let cell = collectionView.cellForItemAtIndexPath(indexPath) as DayCell
-    if let 선택된_목표 = app.selectedTask() {
-      let 날 = cell.날
-      if let 기록 = 찾은(중에: &에_한일들[날], 를: 선택된_목표) {
-        app.삭제(을: 기록)
-      } else {
-        let 기록 = app.한걸로(를: 선택된_목표, 에: 날)
-        추가(에: 날, 을: 기록)
+    if let cell = collectionView.cellForItemAtIndexPath(indexPath) as? DayCell {
+      if let 선택된_목표 = app.selectedTask() {
+        let 날 = cell.날
+        if let 기록 = 찾은(중에: &에_한일들[날], 를: 선택된_목표) {
+          app.삭제(을: 기록)
+        } else {
+          let 기록 = app.한걸로(를: 선택된_목표, 에: 날)
+          추가(에: 날, 을: 기록)
+        }
+        cell.icon.text = 아이콘들(에서: 에_한일들[날])
+        app.tasksViewController.refreshCount()
       }
-      cell.icon.text = 아이콘들(에서: 에_한일들[날])
-      app.tasksViewController.refreshCount()
     }
   }
 
@@ -182,21 +177,6 @@ class CalendarViewController: UICollectionViewController {
     return ""
   }
 
-  /*
-  // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-  func collectionView(collectionView: UICollectionView!, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath!) -> Bool {
-  return false
-  }
-  
-  func collectionView(collectionView: UICollectionView!, canPerformAction action: String!, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) -> Bool {
-  return false
-  }
-  
-  func collectionView(collectionView: UICollectionView!, performAction action: String!, forItemAtIndexPath indexPath: NSIndexPath!, withSender sender: AnyObject!) {
-  
-  }
-  */
-
   func collectionView(cv: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
     if indexPath.indexAtPosition(1) < 7 {
       return CGSize(width: 44, height: 24)
@@ -219,7 +199,7 @@ class CalendarViewController: UICollectionViewController {
     return (x + y - 1) / y * y
   }
 
-  func 전_달_보여줘() {
+  func showPrevMonth() {
     let 분해 = 달력.components(날_플래그, fromDate: 달_첫날)
     if 분해.month > 1 {
       분해.month--
@@ -227,10 +207,10 @@ class CalendarViewController: UICollectionViewController {
       분해.month = 12
       분해.year--
     }
-    달_첫날_변경(분해)
+    changeMonth(분해)
   }
 
-  func 다음_달_보여줘() {
+  func showNextMonth() {
     let 분해 = 달력.components(날_플래그, fromDate: 달_첫날)
     if 분해.month < 12 {
       분해.month++
@@ -238,10 +218,10 @@ class CalendarViewController: UICollectionViewController {
       분해.month = 1
       분해.year++
     }
-    달_첫날_변경(분해)
+    changeMonth(분해)
   }
 
-  func 달_첫날_변경(분해: NSDateComponents) {
+  func changeMonth(분해: NSDateComponents) {
     달_첫날 = 달력.dateFromComponents(분해)!
     (첫칸_날, 보여주는_달) = 달_변화에_따라(달_첫날)
     collectionView!.reloadData()
